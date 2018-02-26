@@ -1,0 +1,167 @@
+fileFormatVersion: 2
+guid: 6a9747d869656004d990f3fa2d481ef6
+timeCreated: 1519676928
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Bocacha
+    100002: Carga 1
+    100004: Carga 2
+    100006: Carga 3
+    100008: "Ca\xF1on"
+    100010: CuerpoArma
+    100012: Glow
+    100014: GuardaManos
+    100016: GuardaManosGlow
+    100018: //RootNode
+    400000: Bocacha
+    400002: Carga 1
+    400004: Carga 2
+    400006: Carga 3
+    400008: "Ca\xF1on"
+    400010: CuerpoArma
+    400012: Glow
+    400014: GuardaManos
+    400016: GuardaManosGlow
+    400018: //RootNode
+    2300000: Bocacha
+    2300002: Carga 1
+    2300004: Carga 2
+    2300006: Carga 3
+    2300008: "Ca\xF1on"
+    2300010: CuerpoArma
+    2300012: Glow
+    2300014: GuardaManos
+    2300016: GuardaManosGlow
+    3300000: Bocacha
+    3300002: Carga 1
+    3300004: Carga 2
+    3300006: Carga 3
+    3300008: "Ca\xF1on"
+    3300010: CuerpoArma
+    3300012: Glow
+    3300014: GuardaManos
+    3300016: GuardaManosGlow
+    4300000: GuardaManosGlow
+    4300002: Carga 3
+    4300004: Bocacha
+    4300006: "Ca\xF1on"
+    4300008: GuardaManos
+    4300010: Glow
+    4300012: CuerpoArma
+    4300014: Carga 2
+    4300016: Carga 1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bocacha
+    second: {fileID: 2100000, guid: e4560be1ae596e646af1b9a0f393d81f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carga1
+    second: {fileID: 2100000, guid: 518290ca7209bab4995c7c2f316a3a81, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carga2
+    second: {fileID: 2100000, guid: d3e22dfe5d0dfb242bb7afdbd427901b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carga3
+    second: {fileID: 2100000, guid: 6afed981029e6d443ae156a08983b532, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ca\xF1on"
+    second: {fileID: 2100000, guid: ad8a50e72e8c98b41be12bde779ffaf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CuerpoArma
+    second: {fileID: 2100000, guid: 2e05dea4da9fe0e43af5171fec56681c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glow
+    second: {fileID: 2100000, guid: 5f70c52366ad91f4da71a4a9e8411405, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
