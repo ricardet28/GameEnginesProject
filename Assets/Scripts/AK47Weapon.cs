@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultWeapon : BaseWeapon {
+public class AK47Weapon : BaseWeapon {
 
     public override void Setup()
     {
-        currentBullets = 3;
+        currentBullets = 20;
 
         range = 100f;
 
-        bulletsPerMag = 3;
+        bulletsPerMag = 20;
         bulletsLeft = 200;
-        fireRate = 0.5f;
+        fireRate = 0.1f;
 
         anim = GetComponentInParent<Animator>();
     }

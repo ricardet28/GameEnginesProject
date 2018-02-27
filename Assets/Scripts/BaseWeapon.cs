@@ -40,7 +40,7 @@ abstract public class BaseWeapon : MonoBehaviour {
         
         rBodyBullet.AddForce(WeaponManager.instance.bullets[WeaponManager.instance.activeBulletIndex].velocity * shootPoint.transform.forward);
 
-        anim.CrossFadeInFixedTime("Fire", fireRate);
+        anim.CrossFadeInFixedTime("Fire", 0.1f);
 
         fireTimer = 0;
         currentBullets--;

@@ -52,34 +52,49 @@ public class WeaponManager : MonoBehaviour {
 
     }
 
-    void ChangeTypeOfBullet()
+    void ChangeTypeOfBulletUpwards()
     {
         activeBulletIndex++;
         if (activeBulletIndex + 1 > bullets.Length) activeBulletIndex = 0;
+        weapons[activeWeaponIndex].Reload();
     }
 
-    void ChangeTypeOfWeapon()
+    void ChangeTypeOfBulletDownwards()
+    {
+        activeBulletIndex--;
+        if (activeBulletIndex < 0) activeBulletIndex = bullets.Length - 1;
+        weapons[activeWeaponIndex].Reload();
+    }
+
+    void ChangeTypeOfWeapon(int n)
     {
         weapons[activeWeaponIndex].gameObject.SetActive(false);
-        activeWeaponIndex++;
-        if (activeWeaponIndex + 1 > weapons.Length) activeWeaponIndex = 0;
+        activeWeaponIndex = n;
         weapons[activeWeaponIndex].gameObject.SetActive(true);
 
     }
 
     void CheckChangeOfBullet()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            ChangeTypeOfBullet();
+            ChangeTypeOfBulletDownwards();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ChangeTypeOfBulletUpwards();
         }
     }
 
     void CheckChangeOfWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && activeWeaponIndex != 0)
         {
-            ChangeTypeOfWeapon();
+            ChangeTypeOfWeapon(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && activeWeaponIndex != 1)
+        {
+            ChangeTypeOfWeapon(1);
         }
     }
 
