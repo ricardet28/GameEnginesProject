@@ -12,4 +12,9 @@ abstract public class BaseBullet : MonoBehaviour {
 
     public abstract void Setup();
 
+    void Start()
+    {
+        Destroy(gameObject, 1f);
+    }
+
 }

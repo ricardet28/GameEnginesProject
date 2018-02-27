@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowBullet : BaseBullet {
+public class SlowBullet : BaseBullet
+{
 
     public override void Setup()
     {

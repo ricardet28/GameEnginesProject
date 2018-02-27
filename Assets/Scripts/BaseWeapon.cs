@@ -4,7 +4,6 @@ using UnityEngine;
 
 abstract public class BaseWeapon : MonoBehaviour {
 
-    public WeaponManager weaponManager;
 
     protected Animator anim;
 
@@ -26,16 +25,20 @@ abstract public class BaseWeapon : MonoBehaviour {
 
     void Start()
     {
-        weaponManager = GameObject.FindObjectOfType<WeaponManager>();
+        if(WeaponManager.instance == null)
+        {
+            Debug.LogError("Falta el WeaponManager, añade el prefab");
+        }
     }
 
-    void Fire()
+    public void Fire()
     {
-        GameObject gO = Instantiate(weaponManager.bullets[weaponManager.activeBulletIndex].gameObject, shootPoint.position, shootPoint.rotation);
 
-        Rigidbody rBodyBullet = gO.GetComponent<Rigidbody>();
+        GameObject bullet = Instantiate(WeaponManager.instance.bullets[WeaponManager.instance.activeBulletIndex].gameObject, shootPoint.position, shootPoint.rotation);
+
+        Rigidbody rBodyBullet = bullet.GetComponent<Rigidbody>();
         
-        rBodyBullet.AddForce(weaponManager.bullets[weaponManager.activeBulletIndex].velocity * shootPoint.transform.forward);
+        rBodyBullet.AddForce(WeaponManager.instance.bullets[WeaponManager.instance.activeBulletIndex].velocity * shootPoint.transform.forward);
 
         anim.CrossFadeInFixedTime("Fire", fireRate);
 
@@ -43,32 +46,9 @@ abstract public class BaseWeapon : MonoBehaviour {
         currentBullets--;
     }
 
-    protected void CheckFire()
-    {
+    
 
-        Debug.DrawRay(shootPoint.position, shootPoint.transform.forward, Color.red);
-
-        if (Input.GetButton("Fire1") && fireTimer > fireRate && currentBullets > 0 && !IsReloading())
-        {
-            Fire();
-        }
-
-        if (fireTimer < fireRate)
-        {
-            fireTimer += Time.deltaTime;
-        }
-    }
-
-
-    protected void CheckReload()
-    {
-        if (Input.GetKeyDown(KeyCode.R) && currentBullets < bulletsPerMag)
-        {
-            Reload();
-        }
-    }
-
-    protected void Reload()
+    public void Reload()
     {
         if (bulletsLeft <= 0) return;
 
@@ -81,7 +61,7 @@ abstract public class BaseWeapon : MonoBehaviour {
         currentBullets += bulletsToDeduct;
     }
 
-    protected bool IsReloading()
+    public bool IsReloading()
     {
         return info.IsName("Reload");
     }
@@ -91,12 +71,6 @@ abstract public class BaseWeapon : MonoBehaviour {
         if (IsReloading()) return;
 
         anim.CrossFadeInFixedTime("Reload", fireRate);
-    }
-
-    void FixedUpdate()
-    {
-        CheckReload();
-        CheckFire();
     }
 
     void Update()
