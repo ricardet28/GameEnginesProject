@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86de5541be7845f43b930ca464f8ed45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
   activeBulletIndex: 0
+  activeWeaponIndex: 0
   bullets:
   - {fileID: 114972259211804204, guid: ab26ef971b6b4124f87b57f78fbbcb30, type: 2}
   - {fileID: 114279356999585020, guid: cd376940a73e51e48b975f62f30d1427, type: 2}

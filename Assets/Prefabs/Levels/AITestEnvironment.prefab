@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4036542766775970}
   m_Layer: 0
-  m_Name: Environment
+  m_Name: AITestEnvironment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
