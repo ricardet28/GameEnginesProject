@@ -9,14 +9,13 @@ public class LevelManager : MonoBehaviour {
     /*[HideInInspector]*/public bool levelCompleted;
     public Vector3 spawnPoint;
 
-    private bool doorOpened;
+
     private int currentPoints;
     private float currentTime;
     
     private void Awake()
     {
         levelCompleted = false;
-        doorOpened = false;
         currentPoints = 0;
         currentTime = 0f;
     }
@@ -26,9 +25,14 @@ public class LevelManager : MonoBehaviour {
         
     }
 
-    private bool OpenDoor()
+    public bool CheckLevelCompleted()
     {
-        return currentPoints >= neededPoints && currentTime < maxTimeToComplete;
+        if (currentPoints >= neededPoints && currentTime < maxTimeToComplete)
+        {
+            levelCompleted = true;
+        }
+        return levelCompleted;
+        
     }
 
 }

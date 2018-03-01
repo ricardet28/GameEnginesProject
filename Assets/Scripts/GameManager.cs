@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
+    public bool[] scenesState;
 
-    private LevelManager _currentLevel;
-    private int[] scenesIndexArray = new int[] { 0, 1, 2, 3 };
+    public LevelManager _currentLevel;
 
     private void Awake()
     {
@@ -25,20 +26,19 @@ public class GameManager : MonoBehaviour {
 
         DontDestroyOnLoad(this);
         
-        SceneManager.LoadScene(1);
-        _currentLevel = GameObject.FindObjectOfType<LevelManager>();
+        SceneManager.LoadScene(3);
 
+    }
+
+    private void Start()
+    {
+        SetCurrentLevelManager();
+        InitArrayScenes();
     }
 
     private void Update()
     {
-
-
-        _currentLevel = GameObject.FindObjectOfType<LevelManager>();
-        if (LevelCompleted())
-        {
-            SceneManager.LoadScene(2);
-        }
+        //SetCurrentLevelManager();
     }
 
     private bool LevelCompleted()
@@ -46,8 +46,25 @@ public class GameManager : MonoBehaviour {
         return _currentLevel.levelCompleted;
     }
 
-    private void SetCurrentLevel()
+    private void SetCurrentLevelManager()
     {
         _currentLevel = GameObject.FindObjectOfType<LevelManager>();
     }
+
+    public void ChangeLevel(int index)
+    {
+        SceneManager.LoadScene(index);
+        SetCurrentLevelManager();
+    }
+
+    private void InitArrayScenes()
+    {
+        scenesState = new bool[SceneManager.sceneCount];
+        for (int i = 0; i < scenesState.Length; i++)
+        {
+            scenesState[i] = false;
+        }
+    }
+
+   
 }
