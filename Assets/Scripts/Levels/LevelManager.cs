@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour {
     /*[HideInInspector]*/public bool levelCompleted;
     public Vector3 spawnPoint;
 
-
+    [SerializeField]
     private int currentPoints;
     private float currentTime;
     
@@ -35,4 +35,8 @@ public class LevelManager : MonoBehaviour {
         
     }
 
+    public void AddPoints(int p)
+    {
+        currentPoints += p;
+    }
 }

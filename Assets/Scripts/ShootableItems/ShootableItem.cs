@@ -4,32 +4,39 @@ using UnityEngine;
 
 abstract public class ShootableItem : MonoBehaviour {
 
-    public int lifePoints;
-    public int pointsWhenDestroyed;
+    protected int lifePoints;
+    protected int pointsWhenDestroyed;
+
+    LevelManager levelManager;
 
     public abstract void Setup();
+
+    void Start()
+    {
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
+        Setup();
+    }
 
     public void TakeDamage(int d)
     {
         lifePoints -= d;
-        if (lifePoints - d < 0)
+        if (lifePoints - d <= 0)
         {
             Destroy();
         }
     }
 
-    public void Destroy()
+    private void Destroy()
     {
+        levelManager.AddPoints(pointsWhenDestroyed);
         Destroy(gameObject);
     }
 
     void OnCollisionEnter(Collision c)
     {
-        Debug.Log("ColisionFuera");
-        Debug.Log(c.gameObject.GetType());
-        if (c.GetType() == typeof(BaseBullet))
+        if (c.gameObject.GetComponent<BaseBullet>() != null)
         {
-            Debug.Log("Colision");
+            TakeDamage((int)c.gameObject.GetComponent<BaseBullet>().damage);
         }
     }
 }
