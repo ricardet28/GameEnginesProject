@@ -41,7 +41,7 @@ public class WeaponManager : MonoBehaviour {
             w.gameObject.SetActive(false);
         }
 
-        Debug.Log(weapons.Length);
+        //Debug.Log(weapons.Length);
         weapons[activeWeaponIndex].gameObject.SetActive(true);
 
         activeBulletIndex = 2;

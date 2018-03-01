@@ -5,15 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour {
 
-    enum Scenes { Loader = 0, Menu = 1, Corridor = 2, Tutorial0 = 3, Tutorial1 = 4 };
-    [SerializeField]
-    Scenes nextScene;
+    //enum Scenes { Loader = 0, Menu = 1, Corridor = 2, Tutorial0 = 3, Tutorial1 = 4 };
 
-    private void Awake()
-    {
-        
-        
-    }
+    public GameManager.Scenes nextScene;
 
     void OnTriggerEnter(Collider other)
     {
@@ -21,13 +15,14 @@ public class ScenesManager : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("is player");
-            if (SceneManager.GetActiveScene().buildIndex == (int)Scenes.Corridor && GameManager.instance.scenesState[(int)nextScene])
+            if (SceneManager.GetActiveScene().buildIndex == (int)GameManager.Scenes.Corridor && GameManager.instance.scenesState[(int)nextScene])
             {
                 GameManager.instance.ChangeLevel((int)nextScene);
             }
             else if (GameManager.instance._currentLevel.CheckLevelCompleted())//we are on a level completed door to exit corridor.
             {
                 Debug.Log("entra");
+                Debug.Log("going to scene in build" + (int)nextScene);
                 GameManager.instance.scenesState[(int)nextScene] = true;
                 GameManager.instance.ChangeLevel((int)nextScene);
             }

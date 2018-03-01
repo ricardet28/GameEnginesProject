@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public enum Scenes { Loader = 0, Menu = 1, Corridor = 2, Tutorial0 = 3, Tutorial1 = 4 };
+
     public static GameManager instance = null;
     public bool[] scenesState;
-
     public LevelManager _currentLevel;
+
+    private int firstSceneToLoad = 2;
 
     private void Awake()
     {
@@ -26,7 +29,7 @@ public class GameManager : MonoBehaviour {
 
         DontDestroyOnLoad(this);
         
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene((int)Scenes.Corridor);
 
     }
 
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour {
 
     private void Update()
     {
+        SetCurrentLevelManager();
         //SetCurrentLevelManager();
     }
 
@@ -59,11 +63,13 @@ public class GameManager : MonoBehaviour {
 
     private void InitArrayScenes()
     {
-        scenesState = new bool[SceneManager.sceneCount];
+        scenesState = new bool[SceneManager.sceneCountInBuildSettings];
         for (int i = 0; i < scenesState.Length; i++)
         {
             scenesState[i] = false;
         }
+        scenesState[(int)Scenes.Tutorial0] = true;
+
     }
 
    
