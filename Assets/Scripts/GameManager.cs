@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour {
     private void Update()
     {
         SetCurrentLevelManager();
-        //SetCurrentLevelManager();
     }
 
     private bool LevelCompleted()
@@ -58,6 +57,7 @@ public class GameManager : MonoBehaviour {
     public void ChangeLevel(int index)
     {
         SceneManager.LoadScene(index);
+        //wait for scene loaded and then:
         SetCurrentLevelManager();
     }
 
