@@ -52,11 +52,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if (instance != null && instance != this)
             {
-                Destroy(this);
+                Destroy(this.gameObject);
                 return;
             }
 
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this.gameObject);
         }
 
         // Use this for initialization

@@ -15,17 +15,17 @@ public class WeaponManager : MonoBehaviour {
 
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
         else if (instance != null && instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
             return;
         }
 
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
 
     }
 
