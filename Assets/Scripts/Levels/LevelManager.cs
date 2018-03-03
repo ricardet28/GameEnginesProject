@@ -7,12 +7,12 @@ public class LevelManager : MonoBehaviour {
     public int neededPoints;
     public float maxTimeToComplete;
     /*[HideInInspector]*/public bool levelCompleted;
-    public Vector3 spawnPoint;
+    public Transform spawnPoint;
 
     [SerializeField]
     private int currentPoints;
     private float currentTime;
-    
+
     private void Awake()
     {
         levelCompleted = false;
@@ -20,11 +20,12 @@ public class LevelManager : MonoBehaviour {
         currentTime = 0f;
     }
 
-    private void Update()
+    private void Start()
     {
-        
+        GameManager.instance._currentLevel = this;
+        //this can be changed.
+        GameObject.FindGameObjectWithTag("Player").transform.position = spawnPoint.position;
     }
-
     public bool CheckLevelCompleted()
     {
         if (currentPoints >= neededPoints && currentTime < maxTimeToComplete)

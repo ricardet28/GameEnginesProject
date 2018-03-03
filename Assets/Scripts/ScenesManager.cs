@@ -11,22 +11,17 @@ public class ScenesManager : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("touching door");
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("is player");
             if (SceneManager.GetActiveScene().buildIndex == (int)GameManager.Scenes.Corridor && GameManager.instance.scenesState[(int)nextScene])
             {
                 GameManager.instance.ChangeLevel((int)nextScene);
             }
             else if (GameManager.instance._currentLevel.CheckLevelCompleted())//we are on a level completed door to exit corridor.
-            {
-                Debug.Log("entra");
-                Debug.Log("going to scene in build" + (int)nextScene);
+            { 
                 GameManager.instance.scenesState[(int)nextScene] = true;
                 GameManager.instance.ChangeLevel((int)nextScene);
             }
         }
     }
-
 }

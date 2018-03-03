@@ -54,4 +54,5 @@ MonoBehaviour:
   neededPoints: 0
   maxTimeToComplete: 0
   levelCompleted: 0
-  spawnPoint: {x: 0, y: 0, z: 0}
+  spawnPoint: {fileID: 0}
+  currentPoints: 0

@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public enum Scenes { Loader = 0, Menu = 1, Corridor = 2, Tutorial0 = 3, Tutorial1 = 4 };
-
     public static GameManager instance = null;
     public bool[] scenesState;
     public LevelManager _currentLevel;
@@ -16,7 +15,6 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
-
         if (instance == null)
         {
             instance = this;
@@ -26,24 +24,15 @@ public class GameManager : MonoBehaviour {
             Destroy(this);
             return;
         }
-
         DontDestroyOnLoad(this);
-        
         SceneManager.LoadScene((int)Scenes.Corridor);
-
     }
 
     private void Start()
     {
-        SetCurrentLevelManager();
         InitArrayScenes();
     }
-
-    private void Update()
-    {
-        SetCurrentLevelManager();
-    }
-
+    
     private bool LevelCompleted()
     {
         return _currentLevel.levelCompleted;
@@ -57,8 +46,6 @@ public class GameManager : MonoBehaviour {
     public void ChangeLevel(int index)
     {
         SceneManager.LoadScene(index);
-        //wait for scene loaded and then:
-        SetCurrentLevelManager();
     }
 
     private void InitArrayScenes()
@@ -69,8 +56,5 @@ public class GameManager : MonoBehaviour {
             scenesState[i] = false;
         }
         scenesState[(int)Scenes.Tutorial0] = true;
-
     }
-
-   
 }
