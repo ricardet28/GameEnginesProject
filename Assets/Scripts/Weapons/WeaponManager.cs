@@ -33,7 +33,7 @@ public class WeaponManager : MonoBehaviour {
     {
         weapons = GameObject.FindObjectsOfType<BaseWeapon>();
 
-        activeWeaponIndex = 0;
+        activeWeaponIndex = 1;
 
         foreach (BaseWeapon w in weapons)
         {
