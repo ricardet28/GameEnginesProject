@@ -33,7 +33,7 @@ Material:
     m_Floats:
     - _CoordUDist: 0.1
     - _CoordVDist: 0.1
-    - _DisplacementAmount: 0.003
+    - _DisplacementAmount: 0.002
     - _FresnelStrench: 1.6
     - _NoiseEffect: 0.81
     - _Transparent: 0.102
