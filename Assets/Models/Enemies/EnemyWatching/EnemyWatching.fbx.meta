@@ -1,34 +1,38 @@
 fileFormatVersion: 2
-guid: 907d0164e2ce08643bbb6c33fcec7c9c
-timeCreated: 1522769991
+guid: ff10696bf22ea164a88caa2df770a2a2
+timeCreated: 1522849891
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Cube
-    100002: Cube.002
-    100004: Cylinder
-    100006: //RootNode
-    100008: Sphere
+    100002: Cube.001
+    100004: Cube.002
+    100006: Cylinder
+    100008: //RootNode
+    100010: Sphere
     400000: Cube
-    400002: Cube.002
-    400004: Cylinder
-    400006: //RootNode
-    400008: Sphere
+    400002: Cube.001
+    400004: Cube.002
+    400006: Cylinder
+    400008: //RootNode
+    400010: Sphere
     2300000: Cube
-    2300002: Cube.002
-    2300004: Cylinder
-    2300006: Sphere
+    2300002: Cube.001
+    2300004: Cube.002
+    2300006: Cylinder
+    2300008: Sphere
     3300000: Cube
-    3300002: Cube.002
-    3300004: Cylinder
-    3300006: Sphere
-    4300000: Sphere
-    4300002: Cylinder
-    4300004: Cube.002
-    4300006: Cube
+    3300002: Cube.001
+    3300004: Cube.002
+    3300006: Cylinder
+    3300008: Sphere
+    4300000: Cube.001
+    4300002: Sphere
+    4300004: Cylinder
+    4300006: Cube.002
+    4300008: Cube
     7400000: Cube.002|Cube.002Action
-    7400002: Cube.002|Cube.004Action
     9500000: //RootNode
   externalObjects:
   - first:
@@ -66,7 +70,7 @@ ModelImporter:
       name: Cube.002|Cube.002Action
       takeName: Cube.002|Cube.002Action
       firstFrame: 0
-      lastFrame: 119
+      lastFrame: 239
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
