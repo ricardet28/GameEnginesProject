@@ -14,7 +14,7 @@ abstract public class BaseBullet : MonoBehaviour {
 
     void Start()
     {
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 3f);
     }
 
 }

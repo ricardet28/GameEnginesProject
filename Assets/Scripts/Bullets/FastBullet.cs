@@ -9,6 +9,6 @@ public class FastBullet : BaseBullet
     {
         type = BulletType.Fast;
         damage = DamageType.Low;
-        velocity = 5000f;
+        velocity = 4000f;
     }
 }
