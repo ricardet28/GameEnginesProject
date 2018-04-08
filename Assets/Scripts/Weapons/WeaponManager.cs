@@ -111,7 +111,6 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
-
     void CheckReload()
     {
         if (Input.GetKeyDown(KeyCode.R) && weapons[activeWeaponIndex].currentBullets < weapons[activeWeaponIndex].bulletsPerMag)
