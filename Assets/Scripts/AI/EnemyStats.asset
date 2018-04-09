@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveChaserSpeed: 4
   movePatrolSpeed: 3
-  lookRange: 25
+  lookRange: 10
   lookSphereCastRadius: 1
   attackRange: 25
   attackRate: 0.5
