@@ -47,9 +47,15 @@ abstract public class ShootableItem : MonoBehaviour {
 
     void OnCollisionEnter(Collision c)
     {
-        if (c.gameObject.GetComponent<BaseBullet>() != null)
+        if (c.gameObject.GetComponent<FastBullet>() != null || c.gameObject.GetComponent<MediumBullet>() != null || c.gameObject.GetComponent<SlowBullet>() != null)
         {
+            Debug.Log("esto existe");
             TakeDamage((int)c.gameObject.GetComponent<BaseBullet>().damage);
+            Destroy(this.gameObject);
+        }
+        if (c.gameObject.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
         }
     }
 
@@ -63,5 +69,7 @@ abstract public class ShootableItem : MonoBehaviour {
     private void MoveBullet()
     {
         this.transform.Translate(direction * velocity * Time.deltaTime);
+        
+
     }
 }

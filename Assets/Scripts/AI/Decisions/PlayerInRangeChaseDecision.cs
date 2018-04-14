@@ -41,10 +41,17 @@ public class PlayerInRangeChaseDecision : Decision {
         {
             if (distance > controller.enemyStats.lookRange)
             {
+                //Vector3 direction = controller.chaseTarget.position - controller.transform.position;
+                //direction.y = 0;
+
+                //Quaternion targetRotation = Quaternion.LookRotation(direction);
+                //controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, Quaternion.Euler(controller.transform.rotation.x, 0f ,controller.transform.rotation.z), 4f * Time.deltaTime);
+                //controller.gameObject.transform.rotation = Quaternion.Euler(0, controller.gameObject.transform.rotation.y, controller.gameObject.transform.rotation.z);
                 return false;
             }
             else
             {
+                //controller.gameObject.transform.rotation = Quaternion.Euler(controller.gameObject.transform.rotation.x, controller.gameObject.transform.rotation.y, 0);
                 return true;
             }
 

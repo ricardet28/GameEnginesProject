@@ -16,7 +16,7 @@ public class ShootAction : ActionAI
         Vector3 aimPlayer = controller.chaseTarget.position - controller.transform.position;
 
         Vector3 direction = controller.chaseTarget.position - controller.transform.position;
-        direction.y = 0;
+        //direction.y = 0;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, targetRotation, 4f * Time.deltaTime);
 

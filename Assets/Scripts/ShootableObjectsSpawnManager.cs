@@ -34,6 +34,7 @@ public class ShootableObjectsSpawnManager : MonoBehaviour {
         int spawnIndex = Random.Range(0, spawns.Length);
         GameObject objectSpawned = Instantiate(objects[objectIndex].gameObject, spawns[spawnIndex].position, spawns[spawnIndex].rotation);
         //Rigidbody objectSpawned = (Rigidbody)Instantiate(objects[objectIndex], spawns[spawnIndex].position, spawns[spawnIndex].rotation);
+
         if (objectSpawned.GetComponent<Diamond>() != null)
         {
             objectSpawned.GetComponent<Diamond>().MoveBullet(spawns[spawnIndex].right, objectSpawnVelocity);
