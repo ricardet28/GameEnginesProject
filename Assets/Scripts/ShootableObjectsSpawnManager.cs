@@ -12,13 +12,13 @@ public class ShootableObjectsSpawnManager : MonoBehaviour {
     public Rigidbody[] objects;
     public int maxTimeSpawn;
     public int minTimeSpawn;
-    public float objectSpawnForce;
+    public float objectSpawnVelocity;
     
     
     
 
     void Start () {
-
+        timeToSpawn = Random.Range(minTimeSpawn, maxTimeSpawn);
         spawns = new Transform[this.transform.childCount];
         for (int i = 0; i < spawns.Length; i++)
         {
@@ -29,10 +29,28 @@ public class ShootableObjectsSpawnManager : MonoBehaviour {
 	
     void Spawn()
     {
+        Debug.Log("spawn");
         int objectIndex = Random.Range(0, objects.Length);
         int spawnIndex = Random.Range(0, spawns.Length);
-        Rigidbody objectSpawned = (Rigidbody)Instantiate(objects[objectIndex], spawns[spawnIndex].position, spawns[spawnIndex].rotation);
-        objectSpawned.velocity = spawns[spawnIndex].transform.right * objectSpawnForce;
+        GameObject objectSpawned = Instantiate(objects[objectIndex].gameObject, spawns[spawnIndex].position, spawns[spawnIndex].rotation);
+        //Rigidbody objectSpawned = (Rigidbody)Instantiate(objects[objectIndex], spawns[spawnIndex].position, spawns[spawnIndex].rotation);
+        if (objectSpawned.GetComponent<Diamond>() != null)
+        {
+            objectSpawned.GetComponent<Diamond>().MoveBullet(spawns[spawnIndex].right, objectSpawnVelocity);
+        }
+        else if (objectSpawned.GetComponent<Rubi>() != null)
+        {
+            objectSpawned.GetComponent<Rubi>().MoveBullet(spawns[spawnIndex].right, objectSpawnVelocity);
+        }
+        else if (objectSpawned.GetComponent<Esmerald>() != null)
+        {
+            objectSpawned.GetComponent<Esmerald>().MoveBullet(spawns[spawnIndex].right, objectSpawnVelocity);
+        }
+
+
+        currentTime = 0f;
+        timeToSpawn = Random.Range(minTimeSpawn, maxTimeSpawn + 1);
+
     }
 	
 	void Update () {
@@ -41,8 +59,8 @@ public class ShootableObjectsSpawnManager : MonoBehaviour {
         if (currentTime >= timeToSpawn)
         {
             Spawn();
-            currentTime = 0f;
-            timeToSpawn = Random.Range(minTimeSpawn, maxTimeSpawn + 1);
+            //currentTime = 0f;
+            
         }
         
 

@@ -15,17 +15,42 @@ public class PlayerInRangeChaseDecision : Decision {
     public bool PlayerInRange(StateController controller)
     {
         float distance = Vector3.Distance(controller.eyes.position, controller.chaseTarget.position);
-        if (distance > controller.enemyStats.lookRange)
+        RaycastHit hit;
+
+        Vector3 startRayPosition = new Vector3(controller.eyes.position.x, 1f, controller.eyes.position.z);
+        Vector3 directionRay = new Vector3(controller.eyes.forward.x, 0f, controller.eyes.forward.z);
+        if (controller.isFather)
         {
-            if (controller.sons.Length > 0 && controller.fatherDetectsPlayer)
+            if (Physics.SphereCast(startRayPosition, controller.enemyStats.lookSphereCastRadius, directionRay, out hit, controller.enemyStats.lookFatherRange)
+            && (hit.collider.CompareTag("Player")) || hit.collider.CompareTag("EnemyBullet"))//entra en el if si está intersectando con algo, si ese algo es el player y si la distancia es menor que el rango de visión.
             {
-                controller.fatherDetectsPlayer = false;
+                Debug.Log("aim to the player");
+                controller.fatherDetectsPlayer = true;
+                return true;
+                
+                
             }
-            return false;
+            else
+            {
+                Debug.Log("por esto era");
+                return false;
+            }
+            
         }
         else
         {
-            return true;
+            if (distance > controller.enemyStats.lookRange)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
+
+
+
     }
 }

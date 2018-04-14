@@ -14,6 +14,7 @@ MonoBehaviour:
   moveChaserSpeed: 4
   movePatrolSpeed: 3
   lookRange: 10
+  lookFatherRange: 50
   lookSphereCastRadius: 1
   attackRange: 25
   attackRate: 0.5

@@ -20,7 +20,7 @@ public class ProjectileBehaviour : MonoBehaviour {
         {
             Debug.Log("hit");
         }
-        Debug.Log(other.tag);
+        //Debug.Log(other.tag);
         //Destroy(gameObject);
     }
 }

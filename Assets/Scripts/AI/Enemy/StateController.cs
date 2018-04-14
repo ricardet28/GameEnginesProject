@@ -10,6 +10,7 @@ public class StateController : MonoBehaviour {
 
     public GameObject father;
     public bool fatherDetectsPlayer;
+    public bool isFather;
     public GameObject[] sons;
 
     public Rigidbody projectile;
@@ -34,10 +35,20 @@ public class StateController : MonoBehaviour {
         navMeshAgent = GetComponent<NavMeshAgent>();
         initialPosition = transform.position;
         aiActive = true;
+
+        if (sons.Length > 0)
+        {
+            isFather = true;
+        }
+        else
+        {
+            isFather = false;
+        }
     }
 
     public void SetupAI (bool aiActivationFromTankManager, List<Transform> wayPointsFromTankManager)
     {
+        
         wayPointList = wayPointsFromTankManager;
         aiActive = aiActivationFromTankManager;
         if (aiActive)
@@ -53,7 +64,7 @@ public class StateController : MonoBehaviour {
 
     private void Update()
     {
-        Debug.Log("aiActive = " + aiActive);
+        //Debug.Log("aiActive = " + aiActive);
         if (!aiActive)
             return;
         currentState.UpdateState(this);

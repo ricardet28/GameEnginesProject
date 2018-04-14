@@ -4,6 +4,11 @@ using UnityEngine;
 
 abstract public class ShootableItem : MonoBehaviour {
 
+    private bool moveBullet = false;
+
+    private Vector3 direction;
+    private float velocity;
+
     protected int lifePoints;
     protected int pointsWhenDestroyed;
 
@@ -15,6 +20,14 @@ abstract public class ShootableItem : MonoBehaviour {
     {
         levelManager = GameObject.FindObjectOfType<LevelManager>();
         Setup();
+    }
+
+    private void Update()
+    {
+        if (moveBullet)
+        {
+            MoveBullet();
+        }
     }
 
     public void TakeDamage(int d)
@@ -38,5 +51,17 @@ abstract public class ShootableItem : MonoBehaviour {
         {
             TakeDamage((int)c.gameObject.GetComponent<BaseBullet>().damage);
         }
+    }
+
+    public void MoveBullet(Vector3 direction, float velocity)
+    {
+        moveBullet = true;
+        this.direction = direction;
+        this.velocity = velocity;
+
+    }
+    private void MoveBullet()
+    {
+        this.transform.Translate(direction * velocity * Time.deltaTime);
     }
 }
