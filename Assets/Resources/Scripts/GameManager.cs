@@ -1,17 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour {
 
     public enum Scenes { Loader = 0, Menu = 1, Corridor = 2, Tutorial0 = 3, Tutorial1 = 4 };
+    public enum PointsToPassLevel { Loader = 0, Menu = 0, Corridos = 0, Tutorial0 = 100, Tutorial1= 200};
+    public enum MaxTimeToCompleteLevel { Loader = 0, Menu = 0, Corridos = 0, Tutorial0 = 40, Tutorial1 = 40};
+
     public static GameManager instance = null;
-    public bool[] scenesState;
     public LevelManager _currentLevel;
 
-    private int firstSceneToLoad = 2;
+    public Text UITime;
+    public Text UIPoints;
+
+    public bool[] scenesState;
+    
+    public Scenes activeScene;
+
+    //private int firstSceneToLoad = 2;
 
     private void Awake()
     {
@@ -31,8 +41,14 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         InitArrayScenes();
+        UITime = GameObject.FindGameObjectWithTag("Time").GetComponent<Text>();
+        UIPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<Text>();
+
+        UITime.enabled = false;
+        UIPoints.enabled = false;
+
     }
-    
+
     private bool LevelCompleted()
     {
         return _currentLevel.levelCompleted;
@@ -43,9 +59,10 @@ public class GameManager : MonoBehaviour {
         _currentLevel = GameObject.FindObjectOfType<LevelManager>();
     }
 
-    public void ChangeLevel(int index)
+    public void ChangeLevel(Scenes scene)
     {
-        SceneManager.LoadScene(index);
+        activeScene = scene;
+        SceneManager.LoadScene((int)scene);
     }
 
     private void InitArrayScenes()
@@ -55,6 +72,8 @@ public class GameManager : MonoBehaviour {
         {
             scenesState[i] = false;
         }
+
         scenesState[(int)Scenes.Tutorial0] = true;
+        activeScene = Scenes.Corridor;
     }
 }

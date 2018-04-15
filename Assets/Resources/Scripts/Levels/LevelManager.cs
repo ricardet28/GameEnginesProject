@@ -2,31 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 
 public class LevelManager : MonoBehaviour {
 
-    public int neededPoints;
-    public float maxTimeToComplete;
+
     /*[HideInInspector]*/public bool levelCompleted;
     public Transform spawnPoint;
-    public Text UITime;
-    public Text UIPoints;
+    
 
     [SerializeField]
+
+    int neededPoints;
+
     private int currentPoints;
     private float currentTime;
 
     private void Awake()
     {
         levelCompleted = false;
-        currentPoints = 0;
-        currentTime = 0f;
-
-        UITime = GameObject.FindGameObjectWithTag("Time").GetComponent<Text>();
-        UIPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<Text>();
-
     }
 
     private void Start()
@@ -35,24 +32,56 @@ public class LevelManager : MonoBehaviour {
         //this can be changed.
         GameObject.FindGameObjectWithTag("Player").transform.position = spawnPoint.position;
 
-        UIPoints.text = currentPoints.ToString();
-        UITime.text = currentTime.ToString();
+        SetInitialParameters();
+
+        GameManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
+        GameManager.instance.UITime.text = currentTime.ToString();
     }
+
+    private void SetInitialParameters()
+    {
+        GameManager.instance.UIPoints.enabled = true;
+        GameManager.instance.UITime.enabled = true;
+
+        GameManager.Scenes activeScene = GameManager.instance.activeScene;
+
+        switch (activeScene)
+        {           
+            case GameManager.Scenes.Tutorial0:
+                neededPoints = (int)GameManager.PointsToPassLevel.Tutorial0;
+                currentTime = (int)GameManager.MaxTimeToCompleteLevel.Tutorial0;
+                break;
+            case GameManager.Scenes.Tutorial1:
+                neededPoints = (int)GameManager.PointsToPassLevel.Tutorial1;
+                currentTime = (int)GameManager.MaxTimeToCompleteLevel.Tutorial1;
+                break;
+        }
+    }
+
     public bool CheckLevelCompleted()
     {
-        if (currentPoints >= neededPoints && currentTime < maxTimeToComplete)
+        if (currentPoints >= neededPoints && currentTime > 0)
         {
             levelCompleted = true;
+            
         }
-        return levelCompleted;
-        
+
+        GameManager.instance.UIPoints.enabled = false;
+        GameManager.instance.UITime.enabled = false;
+        return true;
+
+        //return levelCompleted;       
     }
 
     public void AddPoints(int p)
     {
         currentPoints += p;
-        UIPoints.text = currentPoints.ToString();
+        GameManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();      
+    }
 
-        
+    void Update()
+    {
+        currentTime -= Time.deltaTime;
+        GameManager.instance.UITime.text = ((int)currentTime).ToString();
     }
 }

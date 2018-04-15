@@ -15,12 +15,12 @@ public class ScenesManager : MonoBehaviour {
         {
             if (SceneManager.GetActiveScene().buildIndex == (int)GameManager.Scenes.Corridor && GameManager.instance.scenesState[(int)nextScene])
             {
-                GameManager.instance.ChangeLevel((int)nextScene);
+                GameManager.instance.ChangeLevel(nextScene);
             }
             else if (GameManager.instance._currentLevel.CheckLevelCompleted())//we are on a level completed door to exit corridor.
             { 
                 GameManager.instance.scenesState[(int)nextScene] = true;
-                GameManager.instance.ChangeLevel((int)nextScene);
+                GameManager.instance.ChangeLevel(nextScene);
             }
         }
     }
