@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class LevelManager : MonoBehaviour {
 
@@ -8,6 +11,8 @@ public class LevelManager : MonoBehaviour {
     public float maxTimeToComplete;
     /*[HideInInspector]*/public bool levelCompleted;
     public Transform spawnPoint;
+    public Text UITime;
+    public Text UIPoints;
 
     [SerializeField]
     private int currentPoints;
@@ -18,6 +23,10 @@ public class LevelManager : MonoBehaviour {
         levelCompleted = false;
         currentPoints = 0;
         currentTime = 0f;
+
+        UITime = GameObject.FindGameObjectWithTag("Time").GetComponent<Text>();
+        UIPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<Text>();
+
     }
 
     private void Start()
@@ -25,6 +34,9 @@ public class LevelManager : MonoBehaviour {
         GameManager.instance._currentLevel = this;
         //this can be changed.
         GameObject.FindGameObjectWithTag("Player").transform.position = spawnPoint.position;
+
+        UIPoints.text = currentPoints.ToString();
+        UITime.text = currentTime.ToString();
     }
     public bool CheckLevelCompleted()
     {
@@ -39,5 +51,8 @@ public class LevelManager : MonoBehaviour {
     public void AddPoints(int p)
     {
         currentPoints += p;
+        UIPoints.text = currentPoints.ToString();
+
+        
     }
 }
