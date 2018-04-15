@@ -63,18 +63,18 @@ public class LevelManager : MonoBehaviour {
         if (currentPoints >= neededPoints && currentTime > 0)
         {
             levelCompleted = true;
-            
+            GameManager.instance.scenesState[SceneManager.GetActiveScene().buildIndex+1] = true;
+            GameManager.instance.UIPoints.enabled = false;
+            GameManager.instance.UITime.enabled = false;
+
         }
 
-        GameManager.instance.UIPoints.enabled = false;
-        GameManager.instance.UITime.enabled = false;
-        return true;
-
-        //return levelCompleted;       
+        return levelCompleted;       
     }
 
     public void AddPoints(int p)
     {
+        Debug.Log(currentPoints);
         currentPoints += p;
         GameManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();      
     }
@@ -83,5 +83,10 @@ public class LevelManager : MonoBehaviour {
     {
         currentTime -= Time.deltaTime;
         GameManager.instance.UITime.text = ((int)currentTime).ToString();
+
+        if(currentTime <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
 
     public Text UITime;
     public Text UIPoints;
+    public Image UISlowBullets;
+    public Image UIFastBullets;
+    public Image UIMediumBullets;
 
     public bool[] scenesState;
     
@@ -41,8 +44,6 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         InitArrayScenes();
-        UITime = GameObject.FindGameObjectWithTag("Time").GetComponent<Text>();
-        UIPoints = GameObject.FindGameObjectWithTag("Points").GetComponent<Text>();
 
         UITime.enabled = false;
         UIPoints.enabled = false;
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour {
         }
 
         scenesState[(int)Scenes.Tutorial0] = true;
+        scenesState[(int)Scenes.Corridor] = true;
         activeScene = Scenes.Corridor;
     }
 }

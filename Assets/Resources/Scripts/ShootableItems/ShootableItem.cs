@@ -35,15 +35,10 @@ abstract public class ShootableItem : MonoBehaviour {
         lifePoints -= d;
         if (lifePoints - d <= 0)
         {
-            Destroy();
+            Destroy(this.gameObject);
         }
     }
 
-    private void Destroy()
-    {
-        levelManager.AddPoints(pointsWhenDestroyed);
-        Destroy(gameObject);
-    }
 
     void OnCollisionEnter(Collision c)
     {
@@ -51,6 +46,7 @@ abstract public class ShootableItem : MonoBehaviour {
         {
             Debug.Log("esto existe");
             TakeDamage((int)c.gameObject.GetComponent<BaseBullet>().damage);
+            levelManager.AddPoints(pointsWhenDestroyed);
             Destroy(this.gameObject);
         }
         if (c.gameObject.CompareTag("Wall"))

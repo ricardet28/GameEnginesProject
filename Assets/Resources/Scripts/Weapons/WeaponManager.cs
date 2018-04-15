@@ -44,26 +44,32 @@ public class WeaponManager : MonoBehaviour {
         //Debug.Log(weapons.Length);
         weapons[activeWeaponIndex].gameObject.SetActive(true);
 
-        activeBulletIndex = 2;
+        activeBulletIndex = (int)BaseBullet.BulletType.Slow;
         foreach (BaseBullet b in bullets)
         {
             b.Setup();
         }
+
+        checkColorUIBullets();
+
+
 
     }
 
     void ChangeTypeOfBulletUpwards()
     {
         activeBulletIndex++;
-        if (activeBulletIndex + 1 > bullets.Length) activeBulletIndex = 0;
+        if (activeBulletIndex + 1 > bullets.Length) activeBulletIndex = (int)BaseBullet.BulletType.Slow;
         weapons[activeWeaponIndex].Reload();
+        checkColorUIBullets();
     }
 
     void ChangeTypeOfBulletDownwards()
     {
         activeBulletIndex--;
-        if (activeBulletIndex < 0) activeBulletIndex = bullets.Length - 1;
+        if (activeBulletIndex < 0) activeBulletIndex = (int)BaseBullet.BulletType.Fast;
         weapons[activeWeaponIndex].Reload();
+        checkColorUIBullets();
     }
 
     void ChangeTypeOfWeapon(int n)
@@ -117,6 +123,32 @@ public class WeaponManager : MonoBehaviour {
         {
             weapons[activeWeaponIndex].Reload();
         }
+    }
+
+    void checkColorUIBullets()
+    {
+        Debug.Log(activeBulletIndex);
+        if(activeBulletIndex == (int)BaseBullet.BulletType.Fast)
+        {
+            GameManager.instance.UIFastBullets.color = Color.red;
+            GameManager.instance.UIMediumBullets.color = Color.white;
+            GameManager.instance.UISlowBullets.color = Color.white;
+        }
+
+        if (activeBulletIndex == (int)BaseBullet.BulletType.Medium)
+        {
+            GameManager.instance.UIFastBullets.color = Color.white;
+            GameManager.instance.UIMediumBullets.color = Color.red;
+            GameManager.instance.UISlowBullets.color = Color.white;
+        }
+
+        if (activeBulletIndex == (int)BaseBullet.BulletType.Slow)
+        {
+            GameManager.instance.UIFastBullets.color = Color.white;
+            GameManager.instance.UIMediumBullets.color = Color.white;
+            GameManager.instance.UISlowBullets.color = Color.red;
+        }
+
     }
 
 

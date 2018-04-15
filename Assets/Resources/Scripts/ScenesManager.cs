@@ -18,8 +18,7 @@ public class ScenesManager : MonoBehaviour {
                 GameManager.instance.ChangeLevel(nextScene);
             }
             else if (GameManager.instance._currentLevel.CheckLevelCompleted())//we are on a level completed door to exit corridor.
-            { 
-                GameManager.instance.scenesState[(int)nextScene] = true;
+            {                               
                 GameManager.instance.ChangeLevel(nextScene);
             }
         }
