@@ -254,6 +254,7 @@ MonoBehaviour:
   initialPosition: {x: 0, y: 0, z: 0}
   father: {fileID: 0}
   fatherDetectsPlayer: 0
+  isFather: 0
   sons: []
   projectile: {fileID: 0}
   firePosition: {fileID: 0}

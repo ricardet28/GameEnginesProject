@@ -12,6 +12,8 @@ public class ScanIdleAction : ActionAI {
 
     private void TurnAndScan(StateController controller)
     {
+        
         controller.gameObject.transform.Rotate(0, controller.enemyStats.searchingTurnSpeed * Time.deltaTime, 0);
+        
     }
 }

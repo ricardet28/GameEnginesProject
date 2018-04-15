@@ -27,6 +27,8 @@ public class StateController : MonoBehaviour {
     [HideInInspector]public Transform chaseTarget;
     [HideInInspector]public float stateTimeElapsed;
 
+    private Object[] states;
+
     private bool aiActive;
 
 
@@ -44,6 +46,14 @@ public class StateController : MonoBehaviour {
         {
             isFather = false;
         }
+        StoreStates();
+        
+    }
+
+    private void StoreStates()
+    {
+        states = Resources.LoadAll("Scripts/AI/ScriptableObjects/States/");
+        Debug.Log("We have " + states.Length + " states");
     }
 
     public void SetupAI (bool aiActivationFromTankManager, List<Transform> wayPointsFromTankManager)
@@ -68,7 +78,23 @@ public class StateController : MonoBehaviour {
         if (!aiActive)
             return;
         currentState.UpdateState(this);
+
+        //StateBehaviour();
+
+
     }
+
+
+    public void StateBehaviour()
+    {
+        if (currentState != states[11] && currentState != states[12])
+        {
+            Debug.Log("rotationX = 0");
+            Quaternion desiredRotation = Quaternion.Euler(0f, transform.rotation.y, transform.rotation.z);
+            transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, 4f * Time.deltaTime);
+        }
+    }
+
 
     private void OnDrawGizmos()
     {
