@@ -27,6 +27,12 @@ public class StateController : MonoBehaviour {
     [HideInInspector]public Transform chaseTarget;
     [HideInInspector]public float stateTimeElapsed;
 
+
+    Quaternion aimingPlayerRotation;
+    bool canLerp;
+
+
+
     private Object[] states;
 
     private bool aiActive;
@@ -87,12 +93,27 @@ public class StateController : MonoBehaviour {
 
     public void StateBehaviour()
     {
-        if (currentState != states[11] && currentState != states[12])
+        /*
+        if (currentState == states[15])
         {
-            Debug.Log("rotationX = 0");
-            Quaternion desiredRotation = Quaternion.Euler(0f, transform.rotation.y, transform.rotation.z);
-            transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, 4f * Time.deltaTime);
+            //aiming player
+            aimingPlayerRotation = this.transform.rotation;
+
         }
+        */
+        if (Mathf.Round(this.transform.position.x) == 0)
+        {
+            canLerp = false;
+        }
+        else
+        {
+            canLerp = true;
+        }
+        if (currentState == states[10] && canLerp)
+        {
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(0f, this.transform.rotation.y, this.transform.rotation.z), Time.deltaTime);
+        }
+
     }
 
 

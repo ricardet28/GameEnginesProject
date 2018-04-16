@@ -248,6 +248,10 @@ Prefab:
       propertyPath: m_Name
       value: EnemyWatching (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
   m_IsPrefabParent: 0
@@ -902,6 +906,10 @@ Prefab:
       propertyPath: m_Name
       value: EnemyWatching (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
   m_IsPrefabParent: 0
@@ -995,6 +1003,10 @@ Prefab:
     - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
       propertyPath: m_Name
       value: EnemyWatching (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
@@ -1286,6 +1298,10 @@ Prefab:
       propertyPath: m_Name
       value: EnemyWatching (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
   m_IsPrefabParent: 0
@@ -1351,6 +1367,10 @@ Prefab:
     - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
       propertyPath: m_Name
       value: EnemyWatching (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
@@ -1745,6 +1765,10 @@ Prefab:
     - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
       propertyPath: m_Name
       value: EnemyWatching (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
@@ -2787,6 +2811,12 @@ Prefab:
       propertyPath: father
       value: 
       objectReference: {fileID: 237136646}
+    - target: {fileID: 114544202114340344, guid: db8067c68a5c6114384af0f083f2d795,
+        type: 2}
+      propertyPath: currentState
+      value: 
+      objectReference: {fileID: 11400000, guid: d7a16d32ae4c5624e817ab5a76295b76,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
   m_IsPrefabParent: 0
@@ -3157,6 +3187,10 @@ Prefab:
       propertyPath: m_Name
       value: EnemyWatching (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
   m_IsPrefabParent: 0
@@ -3373,6 +3407,10 @@ Prefab:
     - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
       propertyPath: m_Name
       value: EnemyWatching (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
@@ -4069,6 +4107,10 @@ Prefab:
       propertyPath: m_Name
       value: EnemyWatching (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
   m_IsPrefabParent: 0
@@ -4229,6 +4271,10 @@ Prefab:
     - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
       propertyPath: m_Name
       value: EnemyWatching (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
@@ -4679,6 +4725,10 @@ Prefab:
       propertyPath: m_Name
       value: EnemyWatching (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
   m_IsPrefabParent: 0
@@ -4886,6 +4936,10 @@ Prefab:
       propertyPath: m_Name
       value: EnemyWatching (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
   m_IsPrefabParent: 0
@@ -5007,6 +5061,10 @@ Prefab:
     - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
       propertyPath: m_Name
       value: EnemyWatching (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852832604352430, guid: db8067c68a5c6114384af0f083f2d795, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db8067c68a5c6114384af0f083f2d795, type: 2}

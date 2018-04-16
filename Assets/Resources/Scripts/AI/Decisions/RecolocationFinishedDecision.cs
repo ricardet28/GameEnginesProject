@@ -15,7 +15,9 @@ public class RecolocationFinishedDecision : Decision {
 
     private bool IsFinished(StateController controller)
     {
-        if (Mathf.Round(controller.transform.rotation.x) == 0)
+        return false;
+        /*
+        if (Mathf.Round(controller.transform.rotation.x) == 0 && Mathf.Round(controller.transform.rotation.z) == 0)
         {
             return true;
         }
@@ -23,5 +25,7 @@ public class RecolocationFinishedDecision : Decision {
         {
             return false;
         }
+        */
+        //if (controller.transform.rotation == controller.gameObject.GetComponentInParent<Transform>().rotation) { }
     }
 }
