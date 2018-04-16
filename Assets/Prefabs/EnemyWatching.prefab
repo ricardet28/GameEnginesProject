@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4375795375757702}
   - component: {fileID: 33501051281789704}
   - component: {fileID: 23025627637413208}
+  - component: {fileID: 114459103954453690}
   m_Layer: 0
   m_Name: RotatorLOD0
   m_TagString: Untagged
@@ -140,6 +141,7 @@ GameObject:
   - component: {fileID: 4230986787327710}
   - component: {fileID: 33191089905457162}
   - component: {fileID: 23282168573119924}
+  - component: {fileID: 114081024691574122}
   m_Layer: 0
   m_Name: RotatorLOD2
   m_TagString: Untagged
@@ -293,6 +295,7 @@ GameObject:
   - component: {fileID: 4640707462128610}
   - component: {fileID: 33432148748275842}
   - component: {fileID: 23996426462097526}
+  - component: {fileID: 114040804018325342}
   m_Layer: 0
   m_Name: RotatorLOD1
   m_TagString: Untagged
@@ -1251,6 +1254,42 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114040804018325342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973343163398710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92de8fa72f06f2e428bcd5cf34ea010e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateVel: -100
+--- !u!114 &114081024691574122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449915076167624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92de8fa72f06f2e428bcd5cf34ea010e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateVel: -100
+--- !u!114 &114459103954453690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1207613732795886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92de8fa72f06f2e428bcd5cf34ea010e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateVel: -100
 --- !u!114 &114544202114340344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1272,13 +1311,16 @@ MonoBehaviour:
   firePosition: {fileID: 4292569497719672}
   enemyStats: {fileID: 11400000, guid: 375c1b02de7f8774cb28be364c0d4f5c, type: 2}
   eyes: {fileID: 4292569497719672}
-  currentState: {fileID: 11400000, guid: b87d465045aebe74faf29005c1237668, type: 2}
+  currentState: {fileID: 11400000, guid: d7a16d32ae4c5624e817ab5a76295b76, type: 2}
   remainState: {fileID: 11400000, guid: cbc644983336429428b279f41bec053e, type: 2}
   navMeshAgent: {fileID: 0}
   wayPointList: []
   nextWayPoint: 0
   chaseTarget: {fileID: 0}
   stateTimeElapsed: 0
+  readyToScanAgain: 0
+  lastPositionPlayer: {x: 0, y: 0, z: 0}
+  lerpValue: 0
 --- !u!114 &114602780562664958
 MonoBehaviour:
   m_ObjectHideFlags: 1

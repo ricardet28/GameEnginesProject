@@ -31,6 +31,11 @@ public class StateController : MonoBehaviour {
     Quaternion aimingPlayerRotation;
     bool canLerp;
 
+    public bool readyToScanAgain;
+    public Vector3 lastPositionPlayer;
+
+    public float lerpValue;
+
 
 
     private Object[] states;
