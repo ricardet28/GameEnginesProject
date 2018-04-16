@@ -50,26 +50,24 @@ public class WeaponManager : MonoBehaviour {
             b.Setup();
         }
 
-        checkColorUIBullets();
+        UIManager.instance.checkColorUIBullets(activeBulletIndex, weapons[activeWeaponIndex].currentBullets);
 
 
 
-    }
-
-    void ChangeTypeOfBulletUpwards()
-    {
-        activeBulletIndex++;
-        if (activeBulletIndex + 1 > bullets.Length) activeBulletIndex = (int)BaseBullet.BulletType.Slow;
-        weapons[activeWeaponIndex].Reload();
-        checkColorUIBullets();
     }
 
     void ChangeTypeOfBulletDownwards()
     {
-        activeBulletIndex--;
-        if (activeBulletIndex < 0) activeBulletIndex = (int)BaseBullet.BulletType.Fast;
+        activeBulletIndex++;
+        if (activeBulletIndex + 1 > bullets.Length) activeBulletIndex = (int)BaseBullet.BulletType.Fast;
         weapons[activeWeaponIndex].Reload();
-        checkColorUIBullets();
+    }
+
+    void ChangeTypeOfBulletUpwards()
+    {
+        activeBulletIndex--;
+        if (activeBulletIndex < 0) activeBulletIndex = (int)BaseBullet.BulletType.Slow;
+        weapons[activeWeaponIndex].Reload();
     }
 
     void ChangeTypeOfWeapon(int n)
@@ -124,34 +122,6 @@ public class WeaponManager : MonoBehaviour {
             weapons[activeWeaponIndex].Reload();
         }
     }
-
-    void checkColorUIBullets()
-    {
-        Debug.Log(activeBulletIndex);
-        if(activeBulletIndex == (int)BaseBullet.BulletType.Fast)
-        {
-            GameManager.instance.UIFastBullets.color = Color.red;
-            GameManager.instance.UIMediumBullets.color = Color.white;
-            GameManager.instance.UISlowBullets.color = Color.white;
-        }
-
-        if (activeBulletIndex == (int)BaseBullet.BulletType.Medium)
-        {
-            GameManager.instance.UIFastBullets.color = Color.white;
-            GameManager.instance.UIMediumBullets.color = Color.red;
-            GameManager.instance.UISlowBullets.color = Color.white;
-        }
-
-        if (activeBulletIndex == (int)BaseBullet.BulletType.Slow)
-        {
-            GameManager.instance.UIFastBullets.color = Color.white;
-            GameManager.instance.UIMediumBullets.color = Color.white;
-            GameManager.instance.UISlowBullets.color = Color.red;
-        }
-
-    }
-
-
 
     void FixedUpdate()
     {

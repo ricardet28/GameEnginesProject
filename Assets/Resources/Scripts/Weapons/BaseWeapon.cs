@@ -44,9 +44,12 @@ abstract public class BaseWeapon : MonoBehaviour {
 
         fireTimer = 0;
         currentBullets--;
+
+        UIManager.instance.checkColorUIBullets(WeaponManager.instance.activeBulletIndex, currentBullets);
+
     }
 
-    
+
 
     public void Reload()
     {
@@ -59,6 +62,8 @@ abstract public class BaseWeapon : MonoBehaviour {
 
         bulletsLeft -= bulletsToDeduct;
         currentBullets += bulletsToDeduct;
+
+        UIManager.instance.checkColorUIBullets(WeaponManager.instance.activeBulletIndex, currentBullets);
     }
 
     public bool IsReloading()

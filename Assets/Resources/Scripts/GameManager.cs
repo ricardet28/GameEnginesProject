@@ -14,12 +14,6 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public LevelManager _currentLevel;
 
-    public Text UITime;
-    public Text UIPoints;
-    public Image UISlowBullets;
-    public Image UIFastBullets;
-    public Image UIMediumBullets;
-
     public bool[] scenesState;
     
     public Scenes activeScene;
@@ -45,8 +39,6 @@ public class GameManager : MonoBehaviour {
     {
         InitArrayScenes();
 
-        UITime.enabled = false;
-        UIPoints.enabled = false;
 
     }
 

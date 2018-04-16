@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-
     /*[HideInInspector]*/public bool levelCompleted;
     public Transform spawnPoint;
     
@@ -34,14 +33,14 @@ public class LevelManager : MonoBehaviour {
 
         SetInitialParameters();
 
-        GameManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
-        GameManager.instance.UITime.text = currentTime.ToString();
+        UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
+        UIManager.instance.UITime.text = currentTime.ToString();
     }
 
     private void SetInitialParameters()
     {
-        GameManager.instance.UIPoints.enabled = true;
-        GameManager.instance.UITime.enabled = true;
+        UIManager.instance.UIPoints.enabled = true;
+        UIManager.instance.UITime.enabled = true;
 
         GameManager.Scenes activeScene = GameManager.instance.activeScene;
 
@@ -64,8 +63,8 @@ public class LevelManager : MonoBehaviour {
         {
             levelCompleted = true;
             GameManager.instance.scenesState[SceneManager.GetActiveScene().buildIndex+1] = true;
-            GameManager.instance.UIPoints.enabled = false;
-            GameManager.instance.UITime.enabled = false;
+            UIManager.instance.UIPoints.enabled = false;
+            UIManager.instance.UITime.enabled = false;
 
         }
 
@@ -76,13 +75,13 @@ public class LevelManager : MonoBehaviour {
     {
         Debug.Log(currentPoints);
         currentPoints += p;
-        GameManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();      
+        UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();      
     }
 
     void Update()
     {
         currentTime -= Time.deltaTime;
-        GameManager.instance.UITime.text = ((int)currentTime).ToString();
+        UIManager.instance.UITime.text = ((int)currentTime).ToString();
 
         if(currentTime <= 0)
         {
