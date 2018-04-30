@@ -9,12 +9,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d41ae992c18185f45b0fb2e339ddd154, type: 3}
-  m_Name: ScanningIdleAndOrderShoot
+  m_Name: ResetRotationFather
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 9225e23c8a976614983ce57517e8352c, type: 2}
+  - {fileID: 11400000, guid: bc27ed339c95af34abedf11f942580f6, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: 2b33d27f0a420334c9be2ba6d30ae77d, type: 2}
-    desiredState: {fileID: 11400000, guid: 3a831cc91e7f8b442829f423b30cb853, type: 2}
+    desiredState: {fileID: 11400000, guid: b19a71a55a7996a4b9281915eee01199, type: 2}
     alternativeState: {fileID: 11400000, guid: cbc644983336429428b279f41bec053e, type: 2}
-  sceneGizmoColor: {r: 0.99259627, g: 1, b: 0.46323532, a: 1}
+  - decision: {fileID: 11400000, guid: 3158f2d609852e149a50e72c5bf21d96, type: 2}
+    desiredState: {fileID: 11400000, guid: 5456ce2b46e0df44fa5534807404cc7b, type: 2}
+    alternativeState: {fileID: 11400000, guid: cbc644983336429428b279f41bec053e, type: 2}
+  sceneGizmoColor: {r: 1, g: 0, b: 0.6827588, a: 1}

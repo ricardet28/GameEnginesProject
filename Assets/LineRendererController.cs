@@ -22,7 +22,7 @@ public class LineRendererController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        _line.SetPosition(0, this.transform.position);
         _line.SetPosition(1, this.transform.forward.normalized * fatherRayLength);
 
         if (_controller.fatherDetectsPlayer)
