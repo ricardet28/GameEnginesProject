@@ -82,4 +82,9 @@ abstract public class BaseWeapon : MonoBehaviour {
     {
         info = anim.GetCurrentAnimatorStateInfo(0);
     }
+
+    public void resetAmmo()
+    {
+        currentBullets = bulletsPerMag;
+    }
 }

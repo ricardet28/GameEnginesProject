@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 
     public Text UITime;
     public Text UIPoints;
+    public Text UIHealth;
 
     public Image UISlowBullets3;
     public Image UISlowBullets2;
@@ -38,14 +39,6 @@ public class UIManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
     }
-
-
-
-    void Start()
-    {
-        
-    }
-
 
      public void checkColorUIBullets(int activeBulletIndex, int currentBullets)
      {
