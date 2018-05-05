@@ -17,9 +17,11 @@ public class RecolocateRotationAction : ActionAI {
         
         Quaternion desiredRotation = Quaternion.LookRotation(direction);
 
-        controller.lerpValue += Time.deltaTime * 1.5f;
-        controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, desiredRotation, controller.lerpValue);
+        controller.lerpValue += Time.deltaTime * 5f;
+        controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, desiredRotation, controller.lerpValue);
 
+        Debug.Log("Actual: " + controller.transform.rotation);
+        Debug.Log("Desired: " + desiredRotation);
 
         if (controller.lerpValue >= 1)
         {

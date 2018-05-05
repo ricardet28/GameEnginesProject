@@ -116,7 +116,6 @@ GameObject:
   - component: {fileID: 114940345313499624}
   - component: {fileID: 54470892132502028}
   - component: {fileID: 82744237853906292}
-  - component: {fileID: 114646821514189004}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -2160,6 +2159,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2731,18 +2731,6 @@ MonoBehaviour:
   fireRate: 0
   fireTimer: 0
   isReloading: 0
---- !u!114 &114646821514189004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102024214850662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ec836c0b9f40f340afec2cf4dfec1e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 100
 --- !u!114 &114940345313499624
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -17,6 +17,4 @@ public class DefaultWeapon : BaseWeapon {
         anim = GetComponentInParent<Animator>();
     }
 
-    
-
 }

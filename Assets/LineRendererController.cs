@@ -15,19 +15,19 @@ public class LineRendererController : MonoBehaviour {
         _controller = GetComponentInParent<StateController>();
     }
     void Start () {
-        //_line.SetPosition(0, this.transform.position);
+        _line.SetPosition(0, this.transform.position);
 
         
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //_line.SetPosition(0, this.transform.position);
-        //_line.SetPosition(1, this.transform.forward.normalized * fatherRayLength);
+        _line.SetPosition(0, this.transform.position);
+        _line.SetPosition(1, this.transform.forward.normalized * fatherRayLength);
 
         if (_controller.fatherDetectsPlayer)
         {
-            //_line.SetPosition(1, _controller.chaseTarget.transform.position);
+            _line.SetPosition(1, _controller.chaseTarget.transform.position);
         }
     }
 }

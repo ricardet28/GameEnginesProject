@@ -56,15 +56,6 @@ public class WeaponManager : MonoBehaviour {
 
     }
 
-    public void restartBullets()
-    {
-        foreach (BaseWeapon w in weapons)
-        {
-            w.Setup();
-            UIManager.instance.checkColorUIBullets(activeBulletIndex, weapons[activeWeaponIndex].currentBullets);
-        }
-    }
-
     void ChangeTypeOfBulletDownwards()
     {
         activeBulletIndex++;
