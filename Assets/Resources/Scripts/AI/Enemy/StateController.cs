@@ -52,19 +52,21 @@ public class StateController : MonoBehaviour {
         if (sons.Length > 0)
         {
             isFather = true;
+            SetSonsFather();
         }
         else
         {
             isFather = false;
         }
-        StoreStates();
+
         
     }
-
-    private void StoreStates()
+    private void SetSonsFather()
     {
-        states = Resources.LoadAll("Scripts/AI/ScriptableObjects/States/");
-        Debug.Log("We have " + states.Length + " states");
+        foreach (GameObject son in sons)
+        {
+            son.GetComponentInChildren<StateController>().father = this.gameObject;
+        }
     }
 
     public void SetupAI (bool aiActivationFromTankManager, List<Transform> wayPointsFromTankManager)

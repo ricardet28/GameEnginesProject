@@ -11,17 +11,18 @@ public class LevelManager : MonoBehaviour {
 
     /*[HideInInspector]*/public bool levelCompleted;
     public Transform spawnPoint;
-    
-
-    [SerializeField]
-
-    int neededPoints;
-
+    [SerializeField] int neededPoints;
     private int currentPoints;
     private float currentTime;
+    private int playerHealthPoints;
+
+    private PlayerHealth _playerHealth;
+    private WeaponManager _weaponManager;
 
     private void Awake()
     {
+        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        _weaponManager = GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>();
         levelCompleted = false;
     }
 
@@ -30,7 +31,7 @@ public class LevelManager : MonoBehaviour {
         GameManager.instance._currentLevel = this;
         //this can be changed.
         GameObject.FindGameObjectWithTag("Player").transform.position = spawnPoint.position;
-
+        playerHealthPoints = _playerHealth.healthPoints;
         SetInitialParameters();
 
         UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
@@ -73,19 +74,48 @@ public class LevelManager : MonoBehaviour {
 
     public void AddPoints(int p)
     {
-        Debug.Log(currentPoints);
+        //Debug.Log(currentPoints);
         currentPoints += p;
         UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();      
     }
 
-    void Update()
+    private void handleTimeLeft()
     {
         currentTime -= Time.deltaTime;
         UIManager.instance.UITime.text = ((int)currentTime).ToString();
 
-        if(currentTime <= 0)
+        if (currentTime <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            reloadThisScene();
         }
+    }
+
+    private bool checkPlayerAlive()
+    {
+        playerHealthPoints = _playerHealth.healthPoints;
+        UIManager.instance.UIHealth.text = playerHealthPoints.ToString();
+        return playerHealthPoints > 0 ? true : false;
+    }
+
+    private void handlePlayerDead()
+    {
+        if (!checkPlayerAlive())
+        {
+            reloadThisScene();
+        }
+    }
+
+    private void reloadThisScene()
+    {
+        _playerHealth.resetHealthPoints();
+        _weaponManager.restartBullets();
+        //TODO: poner la munición al máximo.
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void Update()
+    {
+        handlePlayerDead();
+        handleTimeLeft();
     }
 }

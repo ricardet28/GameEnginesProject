@@ -18,6 +18,7 @@ public class RecolocationFinishedDecision : Decision {
         
         if (controller.readyToScanAgain)
         {
+            controller.readyToScanAgain = false;
             return true;
         }
         else

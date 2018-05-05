@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour {
 
+    public int damagePlayerValue = 5;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,8 +20,8 @@ public class ProjectileBehaviour : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             Debug.Log("hit");
+            other.gameObject.GetComponent<PlayerHealth>().getDamage(damagePlayerValue);
         }
-        //Debug.Log(other.tag);
-        //Destroy(gameObject);
+        
     }
 }
