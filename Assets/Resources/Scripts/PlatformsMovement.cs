@@ -19,8 +19,14 @@ public class PlatformsMovement : MonoBehaviour {
     private float velocityX;
     private float velocityY;
 
+    private GameObject player;
+
+    public bool collidingWithPlayer = false;
+
+    public float separatingPlayerPlatform;
+
 	// Use this for initialization
-	void Awake () {
+	void Start () {
         transforms = GetComponentsInChildren<Transform>();
         position1 = transforms[1].transform.position;
         position2 = transforms[2].transform.position;
@@ -30,22 +36,36 @@ public class PlatformsMovement : MonoBehaviour {
         velocityX = (position2.x - position1.x) * velocity;
         velocityY = (position2.y - position1.y) * velocity;
 
+        player = GameObject.FindGameObjectWithTag("Player");
 
+
+    }
+
+    void OnTriggerStay(Collider c)
+    {
+        Debug.Log("Colliding");
+        if (c.gameObject.GetComponent<PlatformsMovement>() != null)
+        {
+            Debug.Log("Colliding");
+        }
+        collidingWithPlayer = true;
+        
     }
 
     // Update is called once per frame
     void Update () {
+
         /*Debug.Log("It" + initialY);
         Debug.Log("PI "+this.transform.position.y);
         Debug.Log("PD "+position2.y);
         Debug.Log(verticalDirection);*/
 
-        Debug.Log("It" + initialX);
+        /*Debug.Log("It" + initialX);
         Debug.Log("PI " + this.transform.position.x);
         Debug.Log("PD " + position2.x);
         Debug.Log(changeDirection);
         Debug.Log(velocityY + " VY");
-        Debug.Log(velocityX + " VX");
+        Debug.Log(velocityX + " VX");*/
 
         if (lateralMovement && verticalMovement)
         {
@@ -56,6 +76,11 @@ public class PlatformsMovement : MonoBehaviour {
                 float x = this.transform.position.x - velocityX;
                 this.transform.position = new Vector3(x, y, this.transform.position.z);
                 if (changeDirection && (position2.y - this.transform.position.y < 0.1f)) changeDirection = false;
+                if (collidingWithPlayer)
+                {
+                    Debug.Log("Col Play");
+                    player.transform.position = new Vector3(player.transform.position.x - velocityX, player.transform.position.y + velocityY + separatingPlayerPlatform, player.transform.position.z);
+                }
 
             }
             else if (this.transform.position.y >= initialY && !changeDirection)
@@ -65,6 +90,12 @@ public class PlatformsMovement : MonoBehaviour {
                 float x = this.transform.position.x + velocityX;
                 this.transform.position = new Vector3(x, y, this.transform.position.z);
                 if (!changeDirection && (this.transform.position.y - initialY < 0.1f)) changeDirection = true;
+                if (collidingWithPlayer)
+                {
+                    Debug.Log("Col Play");
+                    player.transform.position = new Vector3(player.transform.position.x + velocityX, player.transform.position.y - velocityY + separatingPlayerPlatform, player.transform.position.z);
+
+                }
             }
         }
         else if (verticalMovement)
@@ -86,6 +117,10 @@ public class PlatformsMovement : MonoBehaviour {
                 if (!changeDirection && (this.transform.position.y - initialY < 0.1f)) changeDirection = true;
             }
         }
+
+        collidingWithPlayer = false;
+
+        
 
         /*else if (lateralMovement)
         {
