@@ -17,14 +17,20 @@ public class PlayerHealth : MonoBehaviour {
     {
         healthPoints -= value;
     }
-    
-    private bool playerIsAlive()
-    {
-        return healthPoints > 0 ? true : false;  
-    }
 
     public void resetHealthPoints()
     {
         healthPoints = initHealthPoints;
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("detectando colisiones");
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("RIP");
+            getDamage(healthPoints);
+        }
     }
 }
