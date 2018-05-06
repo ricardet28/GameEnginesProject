@@ -21,4 +21,7 @@ public class EnemyStats : ScriptableObject {
 
     public float shootRatio = 1f;
     public float speedRotation = 5f;
+
+    public float minTimeToTeleport = 3f;
+    public float maxTimeToTeleport = 8f;
 }

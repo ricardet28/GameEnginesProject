@@ -23,8 +23,10 @@ public class StateController : MonoBehaviour {
 
     [HideInInspector]public NavMeshAgent navMeshAgent;
     public List<Transform> wayPointList;
+    public List<Transform> teleportPoints;
+    public Transform currentPoint;
     public int nextWayPoint;
-    [HideInInspector]public Transform chaseTarget;
+    public Transform chaseTarget;
     [HideInInspector]public float stateTimeElapsed;
 
 
@@ -36,6 +38,9 @@ public class StateController : MonoBehaviour {
 
     public float lerpValue;
 
+    public float currentTimer;
+    private float targetTimer;
+    public bool teleportAvalaible;
 
 
     private Object[] states;
@@ -48,6 +53,27 @@ public class StateController : MonoBehaviour {
         navMeshAgent = GetComponent<NavMeshAgent>();
         initialPosition = transform.position;
         aiActive = true;
+        
+
+        
+    }
+    private void Start()
+    {
+        currentTimer = 0f;
+        targetTimer = Random.Range(enemyStats.minTimeToTeleport, enemyStats.maxTimeToTeleport);
+        if (teleportPoints.Count > 0)
+        {
+            currentPoint = teleportPoints[Random.Range(0, teleportPoints.Count)];
+            transform.position = currentPoint.position;
+            transform.rotation = currentPoint.rotation;
+        }
+
+        if (currentState.ToString() == "TeleportingShooting (State)")
+        {
+            chaseTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
+
 
         if (sons.Length > 0)
         {
@@ -58,8 +84,6 @@ public class StateController : MonoBehaviour {
         {
             isFather = false;
         }
-
-        
     }
     private void SetSonsFather()
     {
@@ -87,9 +111,15 @@ public class StateController : MonoBehaviour {
 
     private void Update()
     {
-        //Debug.Log("aiActive = " + aiActive);
+
         if (!aiActive)
             return;
+
+        if (currentState.ToString() == "TeleportingShooting (State)")
+        {
+            //Debug.Log("handling time to teleport! ");
+            handleTeleportTime();
+        }
         currentState.UpdateState(this);
 
         //StateBehaviour();
@@ -97,7 +127,19 @@ public class StateController : MonoBehaviour {
 
     }
 
+    private void handleTeleportTime()
+    {
+        currentTimer += Time.deltaTime;
+        if (currentTimer >= targetTimer)
+        {
+            Debug.Log("teleport");
+            teleportAvalaible = true;
+            currentTimer = 0f;
+            targetTimer = Random.Range(enemyStats.minTimeToTeleport, enemyStats.maxTimeToTeleport);
 
+        }
+        
+    }
     public void StateBehaviour()
     {
         /*

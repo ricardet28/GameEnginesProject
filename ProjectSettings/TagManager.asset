@@ -10,6 +10,8 @@ TagManager:
   - Points
   - Time
   - WeaponManager
+  - Floor
+  - Ground
   layers:
   - Default
   - TransparentFX

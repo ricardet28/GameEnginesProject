@@ -46,7 +46,8 @@ public class LevelManager : MonoBehaviour {
         GameManager.Scenes activeScene = GameManager.instance.activeScene;
 
         switch (activeScene)
-        {           
+        {
+            
             case GameManager.Scenes.Tutorial0:
                 neededPoints = (int)GameManager.PointsToPassLevel.Tutorial0;
                 currentTime = (int)GameManager.MaxTimeToCompleteLevel.Tutorial0;
@@ -109,7 +110,6 @@ public class LevelManager : MonoBehaviour {
     {
         _playerHealth.resetHealthPoints();
         _weaponManager.restartBullets();
-        //TODO: poner la munición al máximo.
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

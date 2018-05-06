@@ -16,7 +16,7 @@ MonoBehaviour:
   lookRange: 10
   lookFatherRange: 50
   lookSphereCastRadius: 1
-  attackRange: 25
+  attackRange: 62.14
   attackRate: 0.5
   attackForce: 2.3
   attackDamage: 50
@@ -24,3 +24,5 @@ MonoBehaviour:
   searchingTurnSpeed: 120
   shootRatio: 1
   speedRotation: 30
+  minTimeToTeleport: 3
+  maxTimeToTeleport: 8

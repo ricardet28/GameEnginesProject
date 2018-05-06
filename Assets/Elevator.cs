@@ -21,10 +21,7 @@ public class Elevator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.y >= _topElevator.position.y)
-            states = elevatorStates.goDown;
-        if (transform.position.y <= _baseElevator.position.y)
-            states = elevatorStates.goUp;
+        changeState();
         moveElevator();
     }
 
@@ -34,5 +31,13 @@ public class Elevator : MonoBehaviour {
             transform.Translate(Vector3.up * Time.deltaTime * speed, Space.World);
         if (states == elevatorStates.goDown)
             transform.Translate(Vector3.down * Time.deltaTime * speed, Space.World);
+    }
+    
+    void changeState()
+    {
+        if (transform.position.y >= _topElevator.position.y)
+            states = elevatorStates.goDown;
+        if (transform.position.y <= _baseElevator.position.y)
+            states = elevatorStates.goUp;
     }
 }
