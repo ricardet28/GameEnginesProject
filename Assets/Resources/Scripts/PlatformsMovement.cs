@@ -71,28 +71,28 @@ public class PlatformsMovement : MonoBehaviour {
         {
             if (this.transform.position.y <= position2.y && changeDirection)
             {
-                Debug.Log("Arriba");
+                //Debug.Log("Arriba");
                 float y = this.transform.position.y + velocityY;
                 float x = this.transform.position.x - velocityX;
                 this.transform.position = new Vector3(x, y, this.transform.position.z);
                 if (changeDirection && (position2.y - this.transform.position.y < 0.1f)) changeDirection = false;
                 if (collidingWithPlayer)
                 {
-                    Debug.Log("Col Play");
+                    //Debug.Log("Col Play");
                     player.transform.position = new Vector3(player.transform.position.x - velocityX, player.transform.position.y + velocityY + separatingPlayerPlatform, player.transform.position.z);
                 }
 
             }
             else if (this.transform.position.y >= initialY && !changeDirection)
             {
-                Debug.Log("Abajo");
+                //Debug.Log("Abajo");
                 float y = this.transform.position.y - velocityY;
                 float x = this.transform.position.x + velocityX;
                 this.transform.position = new Vector3(x, y, this.transform.position.z);
                 if (!changeDirection && (this.transform.position.y - initialY < 0.1f)) changeDirection = true;
                 if (collidingWithPlayer)
                 {
-                    Debug.Log("Col Play");
+                    //Debug.Log("Col Play");
                     player.transform.position = new Vector3(player.transform.position.x + velocityX, player.transform.position.y - velocityY + separatingPlayerPlatform, player.transform.position.z);
 
                 }
@@ -103,7 +103,7 @@ public class PlatformsMovement : MonoBehaviour {
 
             if (this.transform.position.y <= position2.y && changeDirection)
             {
-                Debug.Log("Arriba");
+                //Debug.Log("Arriba");
                 float y = this.transform.position.y + velocityY;
                 this.transform.position = new Vector3(this.transform.position.x, y, this.transform.position.z);
                 if (changeDirection && (position2.y - this.transform.position.y < 0.1f)) changeDirection = false;
@@ -111,7 +111,7 @@ public class PlatformsMovement : MonoBehaviour {
             }
             else if (this.transform.position.y >= initialY && !changeDirection)
             {
-                Debug.Log("Abajo");
+                //Debug.Log("Abajo");
                 float y = this.transform.position.y - velocityY;
                 this.transform.position = new Vector3(this.transform.position.x, y, this.transform.position.z);
                 if (!changeDirection && (this.transform.position.y - initialY < 0.1f)) changeDirection = true;

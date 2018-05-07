@@ -19,7 +19,7 @@ public class ShootingAction : ActionAI {
         if (Physics.SphereCast(controller.eyes.position, controller.enemyStats.lookSphereCastRadius, direction, out hit, 300)
             && hit.collider.CompareTag("Player"))
         {
-            if (controller.checkIfCountDownElapsed(controller.enemyStats.attackRate))
+            if (controller.checkIfCountDownElapsed(controller.enemyStats.attackRate2))
             {
                 Debug.Log("SHOOTING!!");
                 Rigidbody projectileInstance = (Rigidbody)Instantiate(controller.projectile, controller.eyes.position, controller.eyes.rotation);

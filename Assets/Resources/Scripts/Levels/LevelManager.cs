@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour {
 
     private void Start()
     {
+        Debug.Log("LevelManager creado!");
         GameManager.instance._currentLevel = this;
         //this can be changed.
         GameObject.FindGameObjectWithTag("Player").transform.position = spawnPoint.position;
@@ -56,6 +57,10 @@ public class LevelManager : MonoBehaviour {
                 neededPoints = (int)GameManager.PointsToPassLevel.Tutorial1;
                 currentTime = (int)GameManager.MaxTimeToCompleteLevel.Tutorial1;
                 break;
+            case GameManager.Scenes.Tutorial2:
+                neededPoints = (int)GameManager.PointsToPassLevel.Tutorial2;
+                currentTime = (int)GameManager.MaxTimeToCompleteLevel.Tutorial2;
+                break;
         }
     }
 
@@ -63,6 +68,7 @@ public class LevelManager : MonoBehaviour {
     {
         if (currentPoints >= neededPoints && currentTime > 0)
         {
+            Debug.Log("Nivel completado! ");
             levelCompleted = true;
             GameManager.instance.scenesState[SceneManager.GetActiveScene().buildIndex+1] = true;
             UIManager.instance.UIPoints.enabled = false;
