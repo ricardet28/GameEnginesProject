@@ -23,14 +23,4 @@ public class PlayerHealth : MonoBehaviour {
         healthPoints = initHealthPoints;
     }
 
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("detectando colisiones");
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Debug.Log("RIP");
-            getDamage(healthPoints);
-        }
-    }
 }

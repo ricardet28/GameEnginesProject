@@ -39338,6 +39338,7 @@ GameObject:
   - component: {fileID: 1563291627}
   - component: {fileID: 1563291626}
   - component: {fileID: 1563291625}
+  - component: {fileID: 1563291628}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Ground
@@ -39352,8 +39353,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563291623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.3, z: -8.1}
-  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_LocalPosition: {x: 0, y: -3.2, z: -8.1}
+  m_LocalScale: {x: 100, y: 28.30928, z: 100}
   m_Children: []
   m_Father: {fileID: 616185925}
   m_RootOrder: 5
@@ -39399,7 +39400,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563291623}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -39411,6 +39412,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1563291623}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1563291628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1563291623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8db02846b06a940a11be09adb5970b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1567257170 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 9a6ba5f0f6e21c4478a6ba88d2f3212d, type: 3}
