@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public enum Scenes { Loader = 0, Menu = 1, Corridor = 2, Tutorial0 = 3, Tutorial1 = 4, Tutorial2 = 5 };
-    public enum PointsToPassLevel { Loader = 0, Menu = 0, Corridos = 0, Tutorial0 = 100, Tutorial1= 400, Tutorial2 = 400};
+    public enum PointsToPassLevel { Loader = 0, Menu = 0, Corridos = 0, Tutorial0 = 400, Tutorial1= 400, Tutorial2 = 400};
     public enum MaxTimeToCompleteLevel { Loader = 0, Menu = 0, Corridos = 0, Tutorial0 = 40, Tutorial1 = 60, Tutorial2 = 60};
 
     public static GameManager instance = null;

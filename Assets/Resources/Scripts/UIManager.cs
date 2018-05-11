@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 
     public Text UITime;
     public Text UIPoints;
+    public Text UIPointsToReach;
     public Text UIHealth;
 
     public Image UISlowBullets3;

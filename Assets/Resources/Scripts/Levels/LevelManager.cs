@@ -36,6 +36,7 @@ public class LevelManager : MonoBehaviour {
         SetInitialParameters();
 
         UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
+        UIManager.instance.UIPointsToReach.text = "/ " + neededPoints;
         UIManager.instance.UITime.text = currentTime.ToString();
     }
 
