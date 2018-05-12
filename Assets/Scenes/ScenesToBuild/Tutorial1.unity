@@ -31044,7 +31044,7 @@ MonoBehaviour:
   fatherDetectsPlayer: 0
   isFather: 0
   sons: []
-  projectile: {fileID: 54615573815690298, guid: 71e42d27648f1fd41a35ff96214282b7,
+  projectile: {fileID: 54615573815690298, guid: a9cdca217a6e69847bf197b616823b06,
     type: 2}
   firePosition: {fileID: 691423695}
   enemyStats: {fileID: 11400000, guid: 375c1b02de7f8774cb28be364c0d4f5c, type: 2}

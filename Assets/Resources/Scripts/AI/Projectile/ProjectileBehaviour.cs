@@ -5,23 +5,30 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour {
 
     public int damagePlayerValue = 5;
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Debug.Log("hit");
             other.gameObject.GetComponent<PlayerHealth>().getDamage(damagePlayerValue);
+
+            UIManager.instance.setTargetColorHealthBar();
+            StartCoroutine(UIManager.instance.decreaseHealthBar());
+            disableCollider();
+            disableMesh();
+            Destroy(this.gameObject, 1);
+            
+            //Destroy(this.gameObject);
         }
         
+    }
+    private void disableCollider()
+    {
+        this.gameObject.GetComponent<Collider>().enabled = false;
+    }
+    private void disableMesh()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 }

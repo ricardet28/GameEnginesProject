@@ -35,6 +35,12 @@ public class LevelManager : MonoBehaviour {
         playerHealthPoints = _playerHealth.healthPoints;
         SetInitialParameters();
 
+        
+        UIManager.instance.fillImage.color = UIManager.instance.fullHealth;
+
+        UIManager.instance.healthBar.value = playerHealthPoints;
+        UIManager.instance.initHealthPoints = playerHealthPoints;
+        UIManager.instance.healthPoints = playerHealthPoints;
         UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
         UIManager.instance.UIPointsToReach.text = "/ " + neededPoints;
         UIManager.instance.UITime.text = currentTime.ToString();
@@ -74,7 +80,6 @@ public class LevelManager : MonoBehaviour {
             GameManager.instance.scenesState[SceneManager.GetActiveScene().buildIndex+1] = true;
             UIManager.instance.UIPoints.enabled = false;
             UIManager.instance.UITime.enabled = false;
-
         }
 
         return levelCompleted;       
@@ -101,6 +106,7 @@ public class LevelManager : MonoBehaviour {
     private bool checkPlayerAlive()
     {
         playerHealthPoints = _playerHealth.healthPoints;
+        UIManager.instance.healthPoints = playerHealthPoints;
         UIManager.instance.UIHealth.text = playerHealthPoints.ToString();
         return playerHealthPoints > 0 ? true : false;
     }

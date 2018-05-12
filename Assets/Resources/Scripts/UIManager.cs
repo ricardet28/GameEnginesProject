@@ -8,8 +8,17 @@ public class UIManager : MonoBehaviour
 
     public Text UITime;
     public Text UIPoints;
+    public int initHealthPoints;
+    public int healthPoints;
     public Text UIPointsToReach;
     public Text UIHealth;
+    public Slider healthBar;
+    public Color fullHealth;
+    public Color minHealth;
+    private Color targetColor;
+    public Image fillImage;
+
+    [SerializeField]private float decreaseHealthBarSpeed = 0.1f;
 
     public Image UISlowBullets3;
     public Image UISlowBullets2;
@@ -39,6 +48,29 @@ public class UIManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+        
+    }
+
+    public IEnumerator decreaseHealthBar()
+    {
+        
+        float lerpValue = 0;
+        while (lerpValue < 1f)
+        {
+            lerpValue += Time.deltaTime * decreaseHealthBarSpeed;
+            healthBar.value = Mathf.Lerp(healthBar.value, healthPoints, lerpValue);
+            fillImage.color = Color.Lerp(fillImage.color, targetColor, lerpValue);
+            yield return new WaitForEndOfFrame();
+        }
+        lerpValue = 0;
+
+        Debug.Log("exit corroutine");
+    }
+
+    public void setTargetColorHealthBar()
+    {
+        float lerpValue = (float)healthPoints / (float)initHealthPoints;
+        targetColor = Color.Lerp(minHealth, fullHealth, lerpValue);
     }
 
      public void checkColorUIBullets(int activeBulletIndex, int currentBullets)

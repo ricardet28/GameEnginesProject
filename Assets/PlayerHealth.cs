@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour {
     public void getDamage(int value)
     {
         healthPoints -= value;
+        UIManager.instance.healthPoints = healthPoints;
     }
 
     public void resetHealthPoints()
