@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Utility;
+using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
 
 
@@ -9,20 +12,30 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-    /*[HideInInspector]*/public bool levelCompleted;
+    public bool levelCompleted;
     public Transform spawnPoint;
     [SerializeField] int neededPoints;
     private int currentPoints;
     private float currentTime;
     private int playerHealthPoints;
 
+    private GameObject _player;
     private PlayerHealth _playerHealth;
     private WeaponManager _weaponManager;
+    private FirstPersonController _firstPersonController;
+    private WaitForSeconds startWait;
+    private WaitForSeconds endWait;
+    public float startDelay = 3f;
+    public float endDelay = 3f;
 
     private void Awake()
     {
-        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerHealth = _player.GetComponent<PlayerHealth>();
+        _firstPersonController = _player.GetComponent<FirstPersonController>();
         _weaponManager = GameObject.FindGameObjectWithTag("WeaponManager").GetComponent<WeaponManager>();
+        _player.transform.position = spawnPoint.position;
+        _player.transform.rotation = spawnPoint.rotation;
         levelCompleted = false;
     }
 
@@ -30,20 +43,20 @@ public class LevelManager : MonoBehaviour {
     {
         Debug.Log("LevelManager creado!");
         GameManager.instance._currentLevel = this;
-        //this can be changed.
-        GameObject.FindGameObjectWithTag("Player").transform.position = spawnPoint.position;
+
+        startWait = new WaitForSeconds(startDelay);
+        endWait = new WaitForSeconds(endDelay);
+
         playerHealthPoints = _playerHealth.healthPoints;
-        SetInitialParameters();
-
-        
+        SetInitialParameters();       
         UIManager.instance.fillImage.color = UIManager.instance.fullHealth;
-
         UIManager.instance.healthBar.value = playerHealthPoints;
         UIManager.instance.initHealthPoints = playerHealthPoints;
         UIManager.instance.healthPoints = playerHealthPoints;
         UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
         UIManager.instance.UIPointsToReach.text = "/ " + neededPoints;
         UIManager.instance.UITime.text = currentTime.ToString();
+        StartCoroutine(LevelStarting());
     }
 
     private void SetInitialParameters()
@@ -92,17 +105,6 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();      
     }
 
-    private void handleTimeLeft()
-    {
-        currentTime -= Time.deltaTime;
-        UIManager.instance.UITime.text = ((int)currentTime).ToString();
-
-        if (currentTime <= 0)
-        {
-            reloadThisScene();
-        }
-    }
-
     private bool checkPlayerAlive()
     {
         playerHealthPoints = _playerHealth.healthPoints;
@@ -110,13 +112,56 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.UIHealth.text = playerHealthPoints.ToString();
         return playerHealthPoints > 0 ? true : false;
     }
-
-    private void handlePlayerDead()
+    
+    private void DisablePlayerControls()
     {
-        if (!checkPlayerAlive())
+        _firstPersonController.enabled = false;
+        _playerHealth.enabled = false;
+        _weaponManager.enabled = false;
+    }
+
+    private void EnablePlayerControls()
+    {
+        _firstPersonController.enabled = true;
+        _playerHealth.enabled = true;
+        _weaponManager.enabled = true;
+    }
+
+    private IEnumerator LevelStarting()
+    {
+        //DISABLE CONTROLS
+        DisablePlayerControls();
+        //DISABLE AI
+        //MOSTRAR UN TEXTO POR PANTALLA DICIENDO NIVEL 1 EMPEZAMOS!
+        yield return startWait;
+        EnablePlayerControls();
+        StartCoroutine(HandleTimeLeft());
+        StartCoroutine(HandlePlayerDead());
+    }
+
+    private IEnumerator HandleTimeLeft()
+    {
+        Debug.Log("HandleTimeLeft enabled!");
+        while (currentTime > 0)
         {
-            reloadThisScene();
+            currentTime -= Time.deltaTime;
+            UIManager.instance.UITime.text = ((int)currentTime).ToString();
+            yield return null;
         }
+        yield return StartCoroutine(TimeExceeded());
+        reloadThisScene();
+    }
+
+    private IEnumerator HandlePlayerDead()
+    {
+        Debug.Log("HandlePlayerDead enabled!");
+        while (checkPlayerAlive())
+        {
+            yield return null;
+        }
+
+        yield return StartCoroutine(PlayerDead());
+        reloadThisScene();
     }
 
     private void reloadThisScene()
@@ -126,9 +171,24 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    void Update()
+    private IEnumerator TimeExceeded()
     {
-        handlePlayerDead();
-        handleTimeLeft();
+        //MOSTRAR UN TEXTO POR PANTALLA DICIENDO SE HA AGOTADO EL TIEMPO!!
+        //DISABLE CONTROLS
+        //STOP TIME
+        //DISABLE AI
+        Debug.Log("TIEMPO AGOTADO. ");
+        yield return endWait;
     }
+
+    private IEnumerator PlayerDead()
+    {
+        //MOSTRAR UN TEXTO POR PANTALLA DICIENDO QUE HA MUERTO EL PLAYER!!
+        //DISABLE CONTROLS
+        //STOP TIME
+        //STOP AI
+        Debug.Log("PLAYER MUERTO. ");
+        yield return endWait;
+    }
+
 }

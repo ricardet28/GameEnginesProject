@@ -53,14 +53,14 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator decreaseHealthBar()
     {
-        
+        WaitForEndOfFrame waiter = new WaitForEndOfFrame();
         float lerpValue = 0;
         while (lerpValue < 1f)
         {
             lerpValue += Time.deltaTime * decreaseHealthBarSpeed;
             healthBar.value = Mathf.Lerp(healthBar.value, healthPoints, lerpValue);
             fillImage.color = Color.Lerp(fillImage.color, targetColor, lerpValue);
-            yield return new WaitForEndOfFrame();
+            yield return waiter;
         }
         lerpValue = 0;
 

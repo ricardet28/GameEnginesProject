@@ -18,8 +18,7 @@ public class ProjectileBehaviour : MonoBehaviour {
             disableCollider();
             disableMesh();
             Destroy(this.gameObject, 1);
-            
-            //Destroy(this.gameObject);
+
         }
         
     }
