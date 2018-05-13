@@ -38,7 +38,9 @@ public class CorridorManager : MonoBehaviour
 
     void SetUpUI()
     {
+        
         UIManager.instance.healthPoints = _playerHealth.initHealthPoints;
+        UIManager.instance.UIHealth.enabled = false;
         UIManager.instance.healthBar.value = _playerHealth.initHealthPoints;
         UIManager.instance.UIPoints.enabled = false;
         UIManager.instance.UIPointsToReach.enabled = false;
@@ -47,6 +49,12 @@ public class CorridorManager : MonoBehaviour
         Color _newColor = UIManager.instance.UIDamageImage.color;
         _newColor.a = 0;
         UIManager.instance.UIDamageImage.color = _newColor;
+        UIManager.instance.InfoImage.enabled = false;
+        UIManager.instance.InfoText.enabled = false;
+        UIManager.instance.SubInfoText.enabled = false;
+        UIManager.instance.TimeSpentText.enabled = false;
+        UIManager.instance.corridorButton.gameObject.SetActive(false);
+        UIManager.instance.menuButton.gameObject.SetActive(false);
     }
 
 }

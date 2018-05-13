@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScenesManager : MonoBehaviour {
 
     //enum Scenes { Loader = 0, Menu = 1, Corridor = 2, Tutorial0 = 3, Tutorial1 = 4 };
 
     public GameManager.Scenes nextScene;
+    public float timeBetweenChangeScenes = 3f;
 
+    private bool menuButtonPressed;
+    private bool corridorButtonPressed;
+
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -18,9 +24,54 @@ public class ScenesManager : MonoBehaviour {
                 GameManager.instance.ChangeLevel(nextScene);
             }
             else if (GameManager.instance._currentLevel.CheckLevelCompleted())//we are on a level completed door to exit corridor.
-            {                               
-                GameManager.instance.ChangeLevel(nextScene);
+            {
+                StartCoroutine(ShowLevelCompletedInfo());
+                
             }
         }
+    }
+
+    private IEnumerator ShowLevelCompletedInfo()
+    {
+        LevelManager.instance.DisablePlayerControls();
+        AIManager.instance.DisableAI();
+        UIManager.instance.UIPoints.enabled = false;
+        UIManager.instance.UIPointsToReach.enabled = false;
+        UIManager.instance.InfoImage.enabled = true;
+        UIManager.instance.InfoText.enabled = true;
+        UIManager.instance.InfoText.text = "LEVEL COMPLETED";
+        int timeSpent = (int)LevelManager.instance.maxTimeToComplete - (int)LevelManager.instance.currentTime;
+        UIManager.instance.TimeSpentText.enabled = true;
+        UIManager.instance.TimeSpentText.text = "IT TOOK YOU " + timeSpent + " SECONDS";
+        //UIManager.instance.corridorButton.gameObject.SetActive(true);
+        //UIManager.instance.menuButton.gameObject.SetActive(true);
+        //Button _menuButton = UIManager.instance.menuButton;
+        //Button _corridorButton = UIManager.instance.corridorButton;
+        /*
+        _menuButton.onClick.AddListener(ClickMenuButton);
+        _corridorButton.onClick.AddListener(ClickCorridorButton);
+
+        while (!corridorButtonPressed && !menuButtonPressed)
+        {
+            yield return null;
+        }
+
+        Debug.Log("HASTA LUEGO!");
+        corridorButtonPressed = false;
+        menuButtonPressed = false;
+        */
+        yield return new WaitForSeconds(timeBetweenChangeScenes);
+        LevelManager.instance.EnablePlayerControls();
+        GameManager.instance.ChangeLevel(nextScene);
+    }
+
+    private void ClickMenuButton()
+    {
+        menuButtonPressed = true;
+    }
+
+    private void ClickCorridorButton()
+    {
+        corridorButtonPressed = true;
     }
 }

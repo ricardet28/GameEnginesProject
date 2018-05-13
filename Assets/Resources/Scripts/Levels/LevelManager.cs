@@ -7,29 +7,29 @@ using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
 
-
-
-
 public class LevelManager : MonoBehaviour {
 
     public bool levelCompleted;
     public Transform spawnPoint;
     [SerializeField] int neededPoints;
+    public float maxTimeToComplete;
     private int currentPoints;
-    private float currentTime;
+    public float currentTime;
     private int playerHealthPoints;
+    private bool playerDead = false;
 
     private GameObject _player;
     private PlayerHealth _playerHealth;
     private WeaponManager _weaponManager;
     private FirstPersonController _firstPersonController;
-    private WaitForSeconds startWait;
-    private WaitForSeconds endWait;
     public float startDelay = 3f;
     public float endDelay = 3f;
 
+    public static LevelManager instance = null;
+
     private void Awake()
     {
+        instance = this;
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerHealth = _player.GetComponent<PlayerHealth>();
         _firstPersonController = _player.GetComponent<FirstPersonController>();
@@ -43,10 +43,6 @@ public class LevelManager : MonoBehaviour {
     {
         Debug.Log("LevelManager creado!");
         GameManager.instance._currentLevel = this;
-
-        startWait = new WaitForSeconds(startDelay);
-        endWait = new WaitForSeconds(endDelay);
-
         playerHealthPoints = _playerHealth.initHealthPoints;
         SetInitialParameters();
         UIManager.instance.UIPoints.enabled = true;
@@ -64,6 +60,10 @@ public class LevelManager : MonoBehaviour {
         Color _newColor = UIManager.instance.UIDamageImage.color;
         _newColor.a = 0;
         UIManager.instance.UIDamageImage.color = _newColor;
+        UIManager.instance.InfoImage.enabled = true;
+        UIManager.instance.InfoText.enabled = true;
+        UIManager.instance.SubInfoText.enabled = true;
+
         StartCoroutine(LevelStarting());
     }
 
@@ -76,7 +76,6 @@ public class LevelManager : MonoBehaviour {
 
         switch (activeScene)
         {
-            
             case GameManager.Scenes.Tutorial0:
                 neededPoints = (int)GameManager.PointsToPassLevel.Tutorial0;
                 currentTime = (int)GameManager.MaxTimeToCompleteLevel.Tutorial0;
@@ -90,6 +89,8 @@ public class LevelManager : MonoBehaviour {
                 currentTime = (int)GameManager.MaxTimeToCompleteLevel.Tutorial2;
                 break;
         }
+
+        maxTimeToComplete = currentTime;
     }
 
     public bool CheckLevelCompleted()
@@ -122,7 +123,7 @@ public class LevelManager : MonoBehaviour {
         return playerHealthPoints > 0 ? true : false;
     }
     
-    private void DisablePlayerControls()
+    public void DisablePlayerControls()
     {
         _firstPersonController.enabled = false;
         _playerHealth.enabled = false;
@@ -130,9 +131,8 @@ public class LevelManager : MonoBehaviour {
         _player.GetComponent<Collider>().enabled = false;
     }
 
-    private void EnablePlayerControls()
+    public void EnablePlayerControls()
     {
-
         _firstPersonController.enabled = true;
         _playerHealth.enabled = true;
         _weaponManager.enabled = true;
@@ -141,14 +141,22 @@ public class LevelManager : MonoBehaviour {
 
     private IEnumerator LevelStarting()
     {
-        //DISABLE CONTROLS
         DisablePlayerControls();
-        //DISABLE AI
         AIManager.instance.DisableAI();
-        //MOSTRAR UN TEXTO POR PANTALLA DICIENDO NIVEL 1 EMPEZAMOS!
-        yield return startWait;
+        UIManager.instance.InfoText.text = "LEVEL STARTING";
+        float _currentTime = 0f;
+        while (_currentTime <= startDelay)
+        {
+            _currentTime += Time.deltaTime;
+            int timeLeft = (int)startDelay - (int)_currentTime;
+            UIManager.instance.SubInfoText.text = timeLeft.ToString();
+            yield return null;
+        }  
         EnablePlayerControls();
         AIManager.instance.EnableAI();
+        UIManager.instance.InfoImage.enabled = false;
+        UIManager.instance.InfoText.enabled = false;
+        UIManager.instance.SubInfoText.enabled = false;
         StartCoroutine(HandleTimeLeft());
         StartCoroutine(HandlePlayerDead());
     }
@@ -157,9 +165,13 @@ public class LevelManager : MonoBehaviour {
     {
         while (currentTime > 0)
         {
-            currentTime -= Time.deltaTime;
-            UIManager.instance.UITime.text = ((int)currentTime).ToString();
+            if (!playerDead)//don't keep resting time if player is dead.
+            {
+                currentTime -= Time.deltaTime;
+                UIManager.instance.UITime.text = ((int)currentTime).ToString();
+            }
             yield return null;
+
         }
         yield return StartCoroutine(TimeExceeded());
         reloadThisScene();
@@ -171,7 +183,7 @@ public class LevelManager : MonoBehaviour {
         {
             yield return null;
         }
-
+        playerDead = true;
         yield return StartCoroutine(PlayerDead());
         reloadThisScene();
     }
@@ -185,22 +197,41 @@ public class LevelManager : MonoBehaviour {
 
     private IEnumerator TimeExceeded()
     {
-        //MOSTRAR UN TEXTO POR PANTALLA DICIENDO SE HA AGOTADO EL TIEMPO!!
+        UIManager.instance.InfoImage.enabled = true;
+        UIManager.instance.InfoText.enabled = true;
+        UIManager.instance.SubInfoText.enabled = true;
+        UIManager.instance.InfoText.text = "TIME EXCEEDED";
         DisablePlayerControls();
-        //STOP TIME
         AIManager.instance.DisableAI();
         Debug.Log("TIEMPO AGOTADO. ");
-        yield return endWait;
+        float _currentTime = 0f;
+        while (_currentTime <= startDelay)
+        {
+            _currentTime += Time.deltaTime;
+            int timeLeft = (int)startDelay - (int)_currentTime;
+            UIManager.instance.SubInfoText.text = timeLeft.ToString();
+            yield return null;
+        }
     }
 
     private IEnumerator PlayerDead()
     {
-        //MOSTRAR UN TEXTO POR PANTALLA DICIENDO QUE HA MUERTO EL PLAYER!!
+        UIManager.instance.InfoImage.enabled = true;
+        UIManager.instance.InfoText.enabled = true;
+        UIManager.instance.SubInfoText.enabled = true;
+        UIManager.instance.InfoText.text = "YOU DIED";
         DisablePlayerControls();
-        //STOP TIME
         AIManager.instance.DisableAI();
         Debug.Log("PLAYER MUERTO. ");
-        yield return endWait;
+        
+        float _currentTime = 0f;
+        while (_currentTime <= startDelay)
+        {
+            _currentTime += Time.deltaTime;
+            int timeLeft = (int)startDelay - (int)_currentTime;
+            UIManager.instance.SubInfoText.text = timeLeft.ToString();
+            yield return null;
+        }
     }
 
 }
