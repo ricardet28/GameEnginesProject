@@ -61,6 +61,9 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
         UIManager.instance.UIPointsToReach.text = "/ " + neededPoints;
         UIManager.instance.UITime.text = currentTime.ToString();
+        Color _newColor = UIManager.instance.UIDamageImage.color;
+        _newColor.a = 0;
+        UIManager.instance.UIDamageImage.color = _newColor;
         StartCoroutine(LevelStarting());
     }
 

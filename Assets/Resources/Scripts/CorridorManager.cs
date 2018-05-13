@@ -44,6 +44,9 @@ public class CorridorManager : MonoBehaviour
         UIManager.instance.UIPointsToReach.enabled = false;
         UIManager.instance.UITime.enabled = false;
         UIManager.instance.healthBar.gameObject.SetActive(false);
+        Color _newColor = UIManager.instance.UIDamageImage.color;
+        _newColor.a = 0;
+        UIManager.instance.UIDamageImage.color = _newColor;
     }
 
 }

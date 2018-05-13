@@ -19,16 +19,20 @@ public class UIManager : MonoBehaviour
     public Image fillImage;
 
     [SerializeField]private float decreaseHealthBarSpeed = 0.1f;
-    [SerializeField] private float flashImageTime = 0.3f;
+    [SerializeField]private float flashImageTime = 0.3f;
+    private int _activeBullet;
 
+    public Image UISlowBulletIcon;
     public Image UISlowBullets3;
     public Image UISlowBullets2;
     public Image UISlowBullets1;
 
+    public Image UIFastBulletIcon;
     public Image UIFastBullets3;
     public Image UIFastBullets2;
     public Image UIFastBullets1;
 
+    public Image UIMediumBulletIcon;
     public Image UIMediumBullets3;
     public Image UIMediumBullets2;
     public Image UIMediumBullets1;
@@ -51,7 +55,6 @@ public class UIManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
-        
     }
     
     public void ChangeDamageImageAlpha()
@@ -73,8 +76,6 @@ public class UIManager : MonoBehaviour
             yield return waiter;
         }
         lerpValue = 0;
-
-        Debug.Log("exit corroutine");
     }
 
     public IEnumerator HitFlash()
@@ -98,10 +99,13 @@ public class UIManager : MonoBehaviour
 
      public void checkColorUIBullets(int activeBulletIndex, int currentBullets)
      {
-
+        _activeBullet = activeBulletIndex;
          if(activeBulletIndex == (int)BaseBullet.BulletType.Fast)
          {
-             if(currentBullets == 3)
+            UIFastBulletIcon.enabled = true;
+            UIMediumBulletIcon.enabled = false;
+            UISlowBulletIcon.enabled = false;
+            if (currentBullets == 3)
             {
                 UIFastBullets3.enabled = true;
                 UIFastBullets2.enabled = true;
@@ -132,6 +136,9 @@ public class UIManager : MonoBehaviour
 
          if (activeBulletIndex == (int)BaseBullet.BulletType.Slow)
          {
+            UIFastBulletIcon.enabled = false;
+            UIMediumBulletIcon.enabled = false;
+            UISlowBulletIcon.enabled = true;
             if (currentBullets == 3)
             {
                 UISlowBullets3.enabled = true;
@@ -163,6 +170,9 @@ public class UIManager : MonoBehaviour
 
          if (activeBulletIndex == (int)BaseBullet.BulletType.Medium)
          {
+            UIFastBulletIcon.enabled = false;
+            UIMediumBulletIcon.enabled = true;
+            UISlowBulletIcon.enabled = false;
             if (currentBullets == 3)
             {
                 UIMediumBullets3.enabled = true;
