@@ -14,6 +14,8 @@ public class ProjectileBehaviour : MonoBehaviour {
             other.gameObject.GetComponent<PlayerHealth>().getDamage(damagePlayerValue);
 
             UIManager.instance.setTargetColorHealthBar();
+            UIManager.instance.ChangeDamageImageAlpha();
+            StartCoroutine(UIManager.instance.HitFlash());
             StartCoroutine(UIManager.instance.decreaseHealthBar());
             disableCollider();
             disableMesh();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
     public int healthPoints = 100;
-    private int initHealthPoints;
+    public int initHealthPoints;
 
     
 	// Use this for initialization

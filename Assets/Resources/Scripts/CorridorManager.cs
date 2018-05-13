@@ -12,10 +12,18 @@ public class CorridorManager : MonoBehaviour
     public GameObject panel3;
     public GameObject panel4;
 
+    private PlayerHealth _playerHealth;
+    private GameObject _player;
+
+    private void Awake()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerHealth = _player.GetComponent<PlayerHealth>();
+    }
     // Use this for initialization
     void Start()
     {
-
+        SetUpUI();
         OnGoingToCorridor();
         if(GameManager.instance.scenesState[(int)GameManager.Scenes.Tutorial1] == true)
         {
@@ -27,6 +35,17 @@ public class CorridorManager : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("Player").transform.position = spawnPoint.position;       
     }
+
+    void SetUpUI()
+    {
+        UIManager.instance.healthPoints = _playerHealth.initHealthPoints;
+        UIManager.instance.healthBar.value = _playerHealth.initHealthPoints;
+        UIManager.instance.UIPoints.enabled = false;
+        UIManager.instance.UIPointsToReach.enabled = false;
+        UIManager.instance.UITime.enabled = false;
+        UIManager.instance.healthBar.gameObject.SetActive(false);
+    }
+
 }
 	
 	

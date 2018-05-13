@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public Image fillImage;
 
     [SerializeField]private float decreaseHealthBarSpeed = 0.1f;
+    [SerializeField] private float flashImageTime = 0.3f;
 
     public Image UISlowBullets3;
     public Image UISlowBullets2;
@@ -32,6 +33,8 @@ public class UIManager : MonoBehaviour
     public Image UIMediumBullets2;
     public Image UIMediumBullets1;
 
+    public Image UIHitImage;
+    public Image UIDamageImage;
 
     public static UIManager instance = null;
 
@@ -50,6 +53,13 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         
     }
+    
+    public void ChangeDamageImageAlpha()
+    {
+        float lerpValue = (float)healthPoints / (float)initHealthPoints;
+        Color imageColor = new Color(1, 0, 0, Mathf.Lerp(1, 0, lerpValue));
+        UIDamageImage.color = imageColor;
+    }
 
     public IEnumerator decreaseHealthBar()
     {
@@ -65,6 +75,19 @@ public class UIManager : MonoBehaviour
         lerpValue = 0;
 
         Debug.Log("exit corroutine");
+    }
+
+    public IEnumerator HitFlash()
+    {
+        UIHitImage.gameObject.SetActive(true);
+        float currentTime = 0;
+        while (currentTime <= flashImageTime)
+        {
+            currentTime += Time.deltaTime;
+            yield return null;
+
+        }
+        UIHitImage.gameObject.SetActive(false);
     }
 
     public void setTargetColorHealthBar()

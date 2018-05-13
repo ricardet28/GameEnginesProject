@@ -47,12 +47,17 @@ public class LevelManager : MonoBehaviour {
         startWait = new WaitForSeconds(startDelay);
         endWait = new WaitForSeconds(endDelay);
 
-        playerHealthPoints = _playerHealth.healthPoints;
-        SetInitialParameters();       
+        playerHealthPoints = _playerHealth.initHealthPoints;
+        SetInitialParameters();
+        UIManager.instance.UIPoints.enabled = true;
+        UIManager.instance.UIPointsToReach.enabled = true;
+        UIManager.instance.UITime.enabled = true;
+        UIManager.instance.healthBar.gameObject.SetActive(true);
         UIManager.instance.fillImage.color = UIManager.instance.fullHealth;
         UIManager.instance.healthBar.value = playerHealthPoints;
         UIManager.instance.initHealthPoints = playerHealthPoints;
         UIManager.instance.healthPoints = playerHealthPoints;
+        UIManager.instance.UIHealth.text = playerHealthPoints.ToString();
         UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();
         UIManager.instance.UIPointsToReach.text = "/ " + neededPoints;
         UIManager.instance.UITime.text = currentTime.ToString();
@@ -147,7 +152,6 @@ public class LevelManager : MonoBehaviour {
 
     private IEnumerator HandleTimeLeft()
     {
-        Debug.Log("HandleTimeLeft enabled!");
         while (currentTime > 0)
         {
             currentTime -= Time.deltaTime;
@@ -160,7 +164,6 @@ public class LevelManager : MonoBehaviour {
 
     private IEnumerator HandlePlayerDead()
     {
-        Debug.Log("HandlePlayerDead enabled!");
         while (checkPlayerAlive())
         {
             yield return null;
