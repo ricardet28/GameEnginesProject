@@ -10,7 +10,13 @@ public class KillPlayer : MonoBehaviour {
         {
             Debug.Log("Colision con " + collision.gameObject.tag);
             PlayerHealth _playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            _playerHealth.getDamage(_playerHealth.healthPoints);
+            int currentHealthPoints = _playerHealth.healthPoints;
+            _playerHealth.getDamage(currentHealthPoints);
+            UIManager.instance.setTargetColorHealthBar();
+            StartCoroutine(UIManager.instance.decreaseHealthBar());
+            
         }
+
     }
+   
 }

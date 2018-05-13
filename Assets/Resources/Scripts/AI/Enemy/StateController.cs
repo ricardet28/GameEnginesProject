@@ -45,7 +45,7 @@ public class StateController : MonoBehaviour {
 
     private Object[] states;
 
-    private bool aiActive;
+    public bool aiActive;
 
 
     private void Awake()

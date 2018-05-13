@@ -107,6 +107,7 @@ public class LevelManager : MonoBehaviour {
 
     private bool checkPlayerAlive()
     {
+        Debug.Log("Player tiene " + playerHealthPoints + " puntos de salud! ");
         playerHealthPoints = _playerHealth.healthPoints;
         UIManager.instance.healthPoints = playerHealthPoints;
         UIManager.instance.UIHealth.text = playerHealthPoints.ToString();
@@ -118,13 +119,16 @@ public class LevelManager : MonoBehaviour {
         _firstPersonController.enabled = false;
         _playerHealth.enabled = false;
         _weaponManager.enabled = false;
+        _player.GetComponent<Collider>().enabled = false;
     }
 
     private void EnablePlayerControls()
     {
+
         _firstPersonController.enabled = true;
         _playerHealth.enabled = true;
         _weaponManager.enabled = true;
+        _player.GetComponent<Collider>().enabled = true;
     }
 
     private IEnumerator LevelStarting()
@@ -132,9 +136,11 @@ public class LevelManager : MonoBehaviour {
         //DISABLE CONTROLS
         DisablePlayerControls();
         //DISABLE AI
+        AIManager.instance.DisableAI();
         //MOSTRAR UN TEXTO POR PANTALLA DICIENDO NIVEL 1 EMPEZAMOS!
         yield return startWait;
         EnablePlayerControls();
+        AIManager.instance.EnableAI();
         StartCoroutine(HandleTimeLeft());
         StartCoroutine(HandlePlayerDead());
     }
@@ -174,9 +180,9 @@ public class LevelManager : MonoBehaviour {
     private IEnumerator TimeExceeded()
     {
         //MOSTRAR UN TEXTO POR PANTALLA DICIENDO SE HA AGOTADO EL TIEMPO!!
-        //DISABLE CONTROLS
+        DisablePlayerControls();
         //STOP TIME
-        //DISABLE AI
+        AIManager.instance.DisableAI();
         Debug.Log("TIEMPO AGOTADO. ");
         yield return endWait;
     }
@@ -184,9 +190,9 @@ public class LevelManager : MonoBehaviour {
     private IEnumerator PlayerDead()
     {
         //MOSTRAR UN TEXTO POR PANTALLA DICIENDO QUE HA MUERTO EL PLAYER!!
-        //DISABLE CONTROLS
+        DisablePlayerControls();
         //STOP TIME
-        //STOP AI
+        AIManager.instance.DisableAI();
         Debug.Log("PLAYER MUERTO. ");
         yield return endWait;
     }

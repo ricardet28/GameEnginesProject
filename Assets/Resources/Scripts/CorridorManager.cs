@@ -15,7 +15,7 @@ public class CorridorManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Corredor");
+
         OnGoingToCorridor();
         if(GameManager.instance.scenesState[(int)GameManager.Scenes.Tutorial1] == true)
         {

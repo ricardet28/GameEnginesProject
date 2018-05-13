@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
 
      public void checkColorUIBullets(int activeBulletIndex, int currentBullets)
      {
-         Debug.Log(activeBulletIndex);
+
          if(activeBulletIndex == (int)BaseBullet.BulletType.Fast)
          {
              if(currentBullets == 3)
