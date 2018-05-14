@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour {
     public float currentTime;
     private int playerHealthPoints;
     private bool playerDead = false;
+    //private bool levelCompleted = false;
 
     private GameObject _player;
     private PlayerHealth _playerHealth;
@@ -165,7 +166,7 @@ public class LevelManager : MonoBehaviour {
     {
         while (currentTime > 0)
         {
-            if (!playerDead)//don't keep resting time if player is dead.
+            if (!playerDead && !levelCompleted)//don't keep resting time if player is dead.
             {
                 currentTime -= Time.deltaTime;
                 UIManager.instance.UITime.text = ((int)currentTime).ToString();
