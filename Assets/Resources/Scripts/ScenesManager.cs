@@ -43,11 +43,13 @@ public class ScenesManager : MonoBehaviour {
         int timeSpent = (int)LevelManager.instance.maxTimeToComplete - (int)LevelManager.instance.currentTime;
         UIManager.instance.TimeSpentText.enabled = true;
         UIManager.instance.TimeSpentText.text = "IT TOOK YOU " + timeSpent + " SECONDS";
-        //UIManager.instance.corridorButton.gameObject.SetActive(true);
-        //UIManager.instance.menuButton.gameObject.SetActive(true);
-        //Button _menuButton = UIManager.instance.menuButton;
-        //Button _corridorButton = UIManager.instance.corridorButton;
-        /*
+        UIManager.instance.corridorButton.gameObject.SetActive(true);
+        UIManager.instance.menuButton.gameObject.SetActive(true);
+        Button _menuButton = UIManager.instance.menuButton;
+        Button _corridorButton = UIManager.instance.corridorButton;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
         _menuButton.onClick.AddListener(ClickMenuButton);
         _corridorButton.onClick.AddListener(ClickCorridorButton);
 
@@ -59,8 +61,8 @@ public class ScenesManager : MonoBehaviour {
         Debug.Log("HASTA LUEGO!");
         corridorButtonPressed = false;
         menuButtonPressed = false;
-        */
-        yield return new WaitForSeconds(timeBetweenChangeScenes);
+        
+        //yield return new WaitForSeconds(timeBetweenChangeScenes);
         LevelManager.instance.EnablePlayerControls();
         GameManager.instance.ChangeLevel(nextScene);
     }
