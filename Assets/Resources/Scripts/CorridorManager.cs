@@ -55,6 +55,9 @@ public class CorridorManager : MonoBehaviour
         UIManager.instance.TimeSpentText.enabled = false;
         UIManager.instance.corridorButton.gameObject.SetActive(false);
         UIManager.instance.menuButton.gameObject.SetActive(false);
+        UIManager.instance.instructionsButton.gameObject.SetActive(false);
+        UIManager.instance.instructionsImage.enabled = false;
+        UIManager.instance.backLevelButton.gameObject.SetActive(false);
     }
 
 }

@@ -40,12 +40,16 @@ public class UIManager : MonoBehaviour
     public Image UIHitImage;
     public Image UIDamageImage;
     public Image InfoImage;
+    public Image instructionsImage;
+
     public Text InfoText;
     public Text SubInfoText;
     public Text TimeSpentText;
 
     public Button corridorButton;
     public Button menuButton;
+    public Button instructionsButton;
+    public Button backLevelButton;
 
     public static UIManager instance = null;
 

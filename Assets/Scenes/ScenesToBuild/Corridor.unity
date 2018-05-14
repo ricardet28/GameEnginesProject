@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 3
+  timeBetweenChangeScenes: 3
 --- !u!23 &363395493
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7819,6 +7820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 4
+  timeBetweenChangeScenes: 3
 --- !u!23 &827784467
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7938,6 +7940,11 @@ Prefab:
     - target: {fileID: 4439108757934366, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 65657365406483662, guid: bf3a2279e99c54f449c109fc63c69a59,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
@@ -19116,6 +19123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 5
+  timeBetweenChangeScenes: 3
 --- !u!23 &1308816047
 MeshRenderer:
   m_ObjectHideFlags: 0
