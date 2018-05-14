@@ -39,10 +39,10 @@ public class ScenesManager : MonoBehaviour {
         UIManager.instance.UIPointsToReach.enabled = false;
         UIManager.instance.InfoImage.enabled = true;
         UIManager.instance.InfoText.enabled = true;
-        UIManager.instance.InfoText.text = "LEVEL COMPLETED";
+        UIManager.instance.InfoText.text = "level completed";
         int timeSpent = (int)LevelManager.instance.maxTimeToComplete - (int)LevelManager.instance.currentTime;
         UIManager.instance.TimeSpentText.enabled = true;
-        UIManager.instance.TimeSpentText.text = "IT TOOK YOU " + timeSpent + " SECONDS";
+        UIManager.instance.TimeSpentText.text = "it took you " + timeSpent + " seconds";
         UIManager.instance.corridorButton.gameObject.SetActive(true);
         UIManager.instance.menuButton.gameObject.SetActive(true);
         Button _menuButton = UIManager.instance.menuButton;
@@ -57,8 +57,6 @@ public class ScenesManager : MonoBehaviour {
         {
             yield return null;
         }
-
-        Debug.Log("HASTA LUEGO!");
         corridorButtonPressed = false;
         menuButtonPressed = false;
         

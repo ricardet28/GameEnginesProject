@@ -112,7 +112,7 @@ public class LevelManager : MonoBehaviour {
     {
         //Debug.Log(currentPoints);
         currentPoints += p;
-        UIManager.instance.UIPoints.text = "POINTS: " + currentPoints.ToString();      
+        UIManager.instance.UIPoints.text = "points: " + currentPoints.ToString();      
     }
 
     private bool checkPlayerAlive()
@@ -144,7 +144,7 @@ public class LevelManager : MonoBehaviour {
     {
         DisablePlayerControls();
         AIManager.instance.DisableAI();
-        UIManager.instance.InfoText.text = "LEVEL STARTING";
+        UIManager.instance.InfoText.text = "level starting";
         float _currentTime = 0f;
         while (_currentTime <= startDelay)
         {
@@ -201,7 +201,7 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.InfoImage.enabled = true;
         UIManager.instance.InfoText.enabled = true;
         UIManager.instance.SubInfoText.enabled = true;
-        UIManager.instance.InfoText.text = "TIME EXCEEDED";
+        UIManager.instance.InfoText.text = "time exceeded";
         DisablePlayerControls();
         AIManager.instance.DisableAI();
         Debug.Log("TIEMPO AGOTADO. ");
@@ -220,7 +220,7 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.InfoImage.enabled = true;
         UIManager.instance.InfoText.enabled = true;
         UIManager.instance.SubInfoText.enabled = true;
-        UIManager.instance.InfoText.text = "YOU DIED";
+        UIManager.instance.InfoText.text = "you died";
         DisablePlayerControls();
         AIManager.instance.DisableAI();
         Debug.Log("PLAYER MUERTO. ");

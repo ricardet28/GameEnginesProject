@@ -52,7 +52,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BulgeScale: 0
-    - _BulgeShape: 0.44
+    - _BulgeShape: 0.2
     - _GlowIntensity: 1.2
     - _Magnitude: 0.23076925
     - _Sharpness: 2.6153843

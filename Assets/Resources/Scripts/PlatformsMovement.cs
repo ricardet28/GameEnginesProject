@@ -25,6 +25,8 @@ public class PlatformsMovement : MonoBehaviour {
 
     public float separatingPlayerPlatform;
 
+    private Collider _collider;
+
 	// Use this for initialization
 	void Start () {
         transforms = GetComponentsInChildren<Transform>();
@@ -38,18 +40,13 @@ public class PlatformsMovement : MonoBehaviour {
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-
+        
     }
 
     void OnTriggerStay(Collider c)
     {
-        Debug.Log("Colliding");
-        if (c.gameObject.GetComponent<PlatformsMovement>() != null)
-        {
-            Debug.Log("Colliding");
-        }
+       
         collidingWithPlayer = true;
-        
     }
 
     // Update is called once per frame
@@ -78,6 +75,7 @@ public class PlatformsMovement : MonoBehaviour {
                 if (changeDirection && (position2.y - this.transform.position.y < 0.1f)) changeDirection = false;
                 if (collidingWithPlayer)
                 {
+                     
                     //Debug.Log("Col Play");
                     player.transform.position = new Vector3(player.transform.position.x - velocityX, player.transform.position.y + velocityY + separatingPlayerPlatform, player.transform.position.z);
                 }
@@ -92,6 +90,8 @@ public class PlatformsMovement : MonoBehaviour {
                 if (!changeDirection && (this.transform.position.y - initialY < 0.1f)) changeDirection = true;
                 if (collidingWithPlayer)
                 {
+                    //player.transform.parent = this.transform;
+ 
                     //Debug.Log("Col Play");
                     player.transform.position = new Vector3(player.transform.position.x + velocityX, player.transform.position.y - velocityY + separatingPlayerPlatform, player.transform.position.z);
 

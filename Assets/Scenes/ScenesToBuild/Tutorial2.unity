@@ -1280,7 +1280,7 @@ MonoBehaviour:
   position2: {x: 0, y: 0, z: 0}
   lateralMovement: 0
   verticalMovement: 1
-  velocity: 0.01
+  velocity: 0.0099
   changeDirection: 0
   collidingWithPlayer: 0
   separatingPlayerPlatform: 0
@@ -1585,6 +1585,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 323815628}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &338571263
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -40.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601785784348708, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &362177336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4369,7 +4411,7 @@ MonoBehaviour:
   position2: {x: 0, y: 0, z: 0}
   lateralMovement: 0
   verticalMovement: 1
-  velocity: 0.01
+  velocity: 0.0099
   changeDirection: 0
   collidingWithPlayer: 0
   separatingPlayerPlatform: 0
@@ -4393,6 +4435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 2
+  timeBetweenChangeScenes: 3
 --- !u!65 &1217848727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4600,7 +4643,7 @@ MonoBehaviour:
   position2: {x: 0, y: 0, z: 0}
   lateralMovement: 0
   verticalMovement: 1
-  velocity: 0.01
+  velocity: 0.0099
   changeDirection: 0
   collidingWithPlayer: 0
   separatingPlayerPlatform: 0
@@ -5690,11 +5733,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4366556699979548, guid: c4f88ccd6874a4a40a765ea6b49ab271, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4405642234163382, guid: c4f88ccd6874a4a40a765ea6b49ab271, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1937321627021648, guid: c4f88ccd6874a4a40a765ea6b49ab271, type: 2}
       propertyPath: m_IsActive
@@ -5794,7 +5837,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4674288823399654, guid: c4f88ccd6874a4a40a765ea6b49ab271, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 23184295964909592, guid: c4f88ccd6874a4a40a765ea6b49ab271,
         type: 2}
@@ -5856,6 +5899,48 @@ Transform:
   m_Father: {fileID: 1216911828}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1583386938
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4163478145762698, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163478145762698, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163478145762698, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163478145762698, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163478145762698, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163478145762698, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163478145762698, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163478145762698, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 476e0eafaead34c4c8a524ad4e78b603, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1594781540
 Prefab:
   m_ObjectHideFlags: 0
@@ -9883,6 +9968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 2
+  timeBetweenChangeScenes: 3
 --- !u!65 &1716137331
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11109,7 +11195,7 @@ MonoBehaviour:
   position2: {x: 0, y: 0, z: 0}
   lateralMovement: 0
   verticalMovement: 1
-  velocity: 0.01
+  velocity: 0.0099
   changeDirection: 0
   collidingWithPlayer: 0
   separatingPlayerPlatform: 0
