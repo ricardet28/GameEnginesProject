@@ -15,7 +15,6 @@ public class ShootableObjectsSpawnManager : MonoBehaviour {
     public float objectSpawnVelocity;
     
     
-    
 
     void Start () {
         timeToSpawn = Random.Range(minTimeSpawn, maxTimeSpawn);
