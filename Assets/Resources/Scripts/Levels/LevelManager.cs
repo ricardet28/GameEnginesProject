@@ -9,7 +9,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
+    
     public bool levelCompleted;
+    public bool levelStarted;
     public Transform spawnPoint;
     [SerializeField] int neededPoints;
     public float maxTimeToComplete;
@@ -18,6 +20,7 @@ public class LevelManager : MonoBehaviour {
     private int playerHealthPoints;
     private bool playerDead = false;
     private bool buttonBackPressed = false;
+    private bool pauseMenu = false;
     //private bool levelCompleted = false;
 
     private GameObject _player;
@@ -67,6 +70,9 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.SubInfoText.enabled = true;
         UIManager.instance.instructionsButton.gameObject.SetActive(false);
         UIManager.instance.instructionsImage.enabled = false;
+        UIManager.instance.InstructionsLevel1.enabled = false;
+        UIManager.instance.InstructionsLevel2.enabled = false;
+        UIManager.instance.InstructionsLevel3.enabled = false;
 
         StartCoroutine(LevelStarting());
     }
@@ -165,17 +171,20 @@ public class LevelManager : MonoBehaviour {
             UIManager.instance.SubInfoText.text = timeLeft.ToString();
             yield return null;
         }
-
+        levelStarted = true;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
 
         EnablePlayerControls();
         AIManager.instance.EnableAI();
+        UIManager.instance.instructionsButton.gameObject.SetActive(false);
+        UIManager.instance.menuButton.gameObject.SetActive(false);
         UIManager.instance.InfoImage.enabled = false;
         UIManager.instance.InfoText.enabled = false;
         UIManager.instance.SubInfoText.enabled = false;
         StartCoroutine(HandleTimeLeft());
         StartCoroutine(HandlePlayerDead());
+        
     }
 
     private IEnumerator HandleTimeLeft()
@@ -258,11 +267,31 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.SubInfoText.enabled = false;
         UIManager.instance.instructionsButton.gameObject.SetActive(false);
 
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+
+            case (int)GameManager.Scenes.Tutorial0:
+                Debug.Log("Hemos pulsado Instrucciones y estamos en level 1");
+                UIManager.instance.InstructionsLevel1.enabled = true;
+                UIManager.instance.InstructionsLevel2.enabled = false;
+                UIManager.instance.InstructionsLevel3.enabled = false;
+                break;
+            case (int)GameManager.Scenes.Tutorial1:
+                UIManager.instance.InstructionsLevel1.enabled = false;
+                UIManager.instance.InstructionsLevel2.enabled = true;
+                UIManager.instance.InstructionsLevel3.enabled = false;
+                break;
+            case (int)GameManager.Scenes.Tutorial2:
+                UIManager.instance.InstructionsLevel1.enabled = false;
+                UIManager.instance.InstructionsLevel2.enabled = false;
+                UIManager.instance.InstructionsLevel3.enabled = true;
+                break;
+        }
+        
         UIManager.instance.instructionsImage.enabled = true;
         UIManager.instance.backLevelButton.gameObject.SetActive(true);
         Button _backLevelButton = UIManager.instance.backLevelButton;
         _backLevelButton.onClick.AddListener(ClickBackLevelButton);
-
         StartCoroutine(ShowInstructionsLevel());
         Time.timeScale = 0;
     }
@@ -270,11 +299,18 @@ public class LevelManager : MonoBehaviour {
     private void ClickBackLevelButton()
     {
         Time.timeScale = 1;
+        UIManager.instance.InstructionsLevel1.enabled = false;
+        UIManager.instance.InstructionsLevel2.enabled = false;
+        UIManager.instance.InstructionsLevel3.enabled = false;
         UIManager.instance.backLevelButton.gameObject.SetActive(false);
         UIManager.instance.instructionsImage.enabled = false;
-        UIManager.instance.InfoImage.enabled = true;
-        UIManager.instance.InfoText.enabled = true;
-        UIManager.instance.SubInfoText.enabled = true;
+       
+        if (pauseMenu)
+        {
+            HidePauseMenu();
+            pauseMenu = false;
+        }
+        
         buttonBackPressed = true;
 
     }
@@ -287,7 +323,100 @@ public class LevelManager : MonoBehaviour {
         }
         //disable instructions image
         buttonBackPressed = false;
+        UIManager.instance.instructionsButton.gameObject.SetActive(true);
+        UIManager.instance.InfoImage.enabled = true;
+        UIManager.instance.InfoText.enabled = true;
+        UIManager.instance.SubInfoText.enabled = true;
         Debug.Log("Salimos de la coroutina. ");
     }
-    
+
+    private void Update()
+    {
+        if (levelStarted)
+        {
+            CheckPauseMenuInput();
+            CheckMouseLock();
+        }
+            
+        
+    }
+    private void CheckMouseLock()
+    {
+        if (pauseMenu)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
+        }
+    }
+    private void CheckPauseMenuInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu = pauseMenu == true ? false : true;
+            if (pauseMenu)
+            {
+                ShowPauseMenu();
+            }
+            else
+            {
+                HidePauseMenu();
+                
+            }
+        }
+    }
+
+    private void ShowPauseMenu()
+    {
+        Time.timeScale = 0;
+        DisablePlayerControls();
+        AIManager.instance.DisableAI();
+        UIManager.instance.instructionsImage.enabled = true;
+        switch (SceneManager.GetActiveScene().buildIndex)
+        {
+
+            case (int)GameManager.Scenes.Tutorial0:
+                Debug.Log("Hemos pulsado Instrucciones y estamos en level 1");
+                UIManager.instance.InstructionsLevel1.enabled = true;
+                UIManager.instance.InstructionsLevel2.enabled = false;
+                UIManager.instance.InstructionsLevel3.enabled = false;
+                break;
+            case (int)GameManager.Scenes.Tutorial1:
+                UIManager.instance.InstructionsLevel1.enabled = false;
+                UIManager.instance.InstructionsLevel2.enabled = true;
+                UIManager.instance.InstructionsLevel3.enabled = false;
+                break;
+            case (int)GameManager.Scenes.Tutorial2:
+                UIManager.instance.InstructionsLevel1.enabled = false;
+                UIManager.instance.InstructionsLevel2.enabled = false;
+                UIManager.instance.InstructionsLevel3.enabled = true;
+                break;
+        }
+        UIManager.instance.backLevelButton.gameObject.SetActive(true);
+        Button _backLevelButton = UIManager.instance.backLevelButton;
+        _backLevelButton.onClick.AddListener(ClickBackLevelButton);
+        UIManager.instance.menuButton.gameObject.SetActive(true);
+        //listener para volver al menu
+        
+        
+    }
+
+    private void HidePauseMenu()
+    {
+        Time.timeScale = 1;
+        EnablePlayerControls();
+        AIManager.instance.EnableAI();
+
+        UIManager.instance.instructionsImage.enabled = false;
+        UIManager.instance.InstructionsLevel1.enabled = false;
+        UIManager.instance.InstructionsLevel2.enabled = false;
+        UIManager.instance.InstructionsLevel3.enabled = false;
+        UIManager.instance.backLevelButton.gameObject.SetActive(false);
+        UIManager.instance.menuButton.gameObject.SetActive(false);
+
+    }
 }

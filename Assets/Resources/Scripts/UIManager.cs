@@ -51,6 +51,10 @@ public class UIManager : MonoBehaviour
     public Button instructionsButton;
     public Button backLevelButton;
 
+    public Text InstructionsLevel1;
+    public Text InstructionsLevel2;
+    public Text InstructionsLevel3;
+
     public static UIManager instance = null;
 
     void Awake()

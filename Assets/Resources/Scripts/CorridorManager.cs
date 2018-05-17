@@ -38,7 +38,9 @@ public class CorridorManager : MonoBehaviour
 
     void SetUpUI()
     {
-        
+        UIManager.instance.InstructionsLevel1.enabled = false;
+        UIManager.instance.InstructionsLevel2.enabled = false;
+        UIManager.instance.InstructionsLevel3.enabled = false;
         UIManager.instance.healthPoints = _playerHealth.initHealthPoints;
         UIManager.instance.UIHealth.enabled = false;
         UIManager.instance.healthBar.value = _playerHealth.initHealthPoints;
@@ -58,6 +60,8 @@ public class CorridorManager : MonoBehaviour
         UIManager.instance.instructionsButton.gameObject.SetActive(false);
         UIManager.instance.instructionsImage.enabled = false;
         UIManager.instance.backLevelButton.gameObject.SetActive(false);
+       
+
     }
 
 }
