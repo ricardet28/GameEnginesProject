@@ -7915,7 +7915,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1686974705279574, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1112384042000004, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}
       propertyPath: m_IsActive
@@ -7945,6 +7945,11 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114940345313499624, guid: bf3a2279e99c54f449c109fc63c69a59,
+        type: 2}
+      propertyPath: m_StickToGroundForce
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf3a2279e99c54f449c109fc63c69a59, type: 2}

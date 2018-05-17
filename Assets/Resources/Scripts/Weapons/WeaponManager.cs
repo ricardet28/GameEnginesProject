@@ -33,7 +33,7 @@ public class WeaponManager : MonoBehaviour {
     {
         weapons = GameObject.FindObjectsOfType<BaseWeapon>();
 
-        activeWeaponIndex = 1;
+        activeWeaponIndex = 0;
 
         foreach (BaseWeapon w in weapons)
         {
@@ -101,14 +101,14 @@ public class WeaponManager : MonoBehaviour {
 
     void CheckChangeOfWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && activeWeaponIndex != 0)
+        /*if (Input.GetKeyDown(KeyCode.Alpha1) && activeWeaponIndex != 0)
         {
             ChangeTypeOfWeapon(0);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && activeWeaponIndex != 1)
         {
             ChangeTypeOfWeapon(1);
-        }
+        }*/
     }
 
     void CheckFire()
