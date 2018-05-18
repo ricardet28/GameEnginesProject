@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 125601bbfb0404d4c8ef82d3f0cb1a75
+  m_OcclusionCullingData: {fileID: 36300000, guid: cb9fb94711b94e646b4ef404d292d628,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -2643,6 +2644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: 2
+  timeBetweenChangeScenes: 3
 --- !u!65 &1217848727
 BoxCollider:
   m_ObjectHideFlags: 0
