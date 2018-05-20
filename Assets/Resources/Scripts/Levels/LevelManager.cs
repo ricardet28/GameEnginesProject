@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-    
+    private static GameManager.Scenes corridor = GameManager.Scenes.Corridor;
     public bool levelCompleted;
     public bool levelStarted;
     public Transform spawnPoint;
@@ -399,10 +399,22 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.backLevelButton.gameObject.SetActive(true);
         Button _backLevelButton = UIManager.instance.backLevelButton;
         _backLevelButton.onClick.AddListener(ClickBackLevelButton);
+
+        UIManager.instance.corridorButton.gameObject.SetActive(true);
+        Button _corridorButton = UIManager.instance.corridorButton;
+        _corridorButton.onClick.AddListener(ClickCorridorButton);
+
+
         UIManager.instance.menuButton.gameObject.SetActive(true);
         //listener para volver al menu
         
         
+    }
+    private void ClickCorridorButton()
+    {
+        Time.timeScale = 1;
+        EnablePlayerControls();
+        GameManager.instance.ChangeLevel(corridor);  
     }
 
     private void HidePauseMenu()
@@ -417,6 +429,7 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.InstructionsLevel3.enabled = false;
         UIManager.instance.backLevelButton.gameObject.SetActive(false);
         UIManager.instance.menuButton.gameObject.SetActive(false);
+        UIManager.instance.corridorButton.gameObject.SetActive(false);
 
     }
 }

@@ -59,8 +59,6 @@ public class ScenesManager : MonoBehaviour {
         }
         corridorButtonPressed = false;
         menuButtonPressed = false;
-        
-        //yield return new WaitForSeconds(timeBetweenChangeScenes);
         LevelManager.instance.EnablePlayerControls();
         GameManager.instance.ChangeLevel(nextScene);
     }
