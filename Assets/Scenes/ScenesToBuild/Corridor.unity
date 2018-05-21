@@ -271,7 +271,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 70398653969d11540a1e58e257e9f468, type: 2}
     - target: {fileID: 100000, guid: 77a22c198dae49943b718a42618b1321, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6400000, guid: 77a22c198dae49943b718a42618b1321, type: 3}
       propertyPath: m_Convex
@@ -341,7 +341,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 70398653969d11540a1e58e257e9f468, type: 2}
     - target: {fileID: 100000, guid: 77a22c198dae49943b718a42618b1321, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 77a22c198dae49943b718a42618b1321, type: 3}
       propertyPath: m_Layer
@@ -8374,7 +8374,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -389965353
+  randomSeed: -1191351090
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -22846,7 +22846,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 470254023
+  randomSeed: 1784164769
   InitialModule:
     serializedVersion: 3
     enabled: 1
