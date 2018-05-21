@@ -29,6 +29,10 @@ public class CorridorManager : MonoBehaviour
         {
             panel1.SetActive(false);
         }
+        if (GameManager.instance.scenesState[(int)GameManager.Scenes.Tutorial2] == true)
+        {
+            panel2.SetActive(true);
+        }
     }
 
     void OnGoingToCorridor()
