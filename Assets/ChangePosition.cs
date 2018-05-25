@@ -30,22 +30,18 @@ public class ChangePosition : MonoBehaviour {
         }
 
         this.transform.position = GestonesManager.instance.GemstonesPositions[index].position;
+        this.transform.parent = GestonesManager.instance.GemstonesPositions[index];
         currentTime = 0f;
         timeToTeleport = Random.Range(GestonesManager.instance.minTimeToTeleport, GestonesManager.instance.maxTimeToTeleport);
-
     }
 
     private bool IsBusy(int index)
-    {
-        int num = GestonesManager.instance.Gemstones.Length;
-        for (int i = 0; i<num; i++)
+    {    
+        if (GestonesManager.instance.GemstonesPositions[index].childCount > 0)
         {
-            if (this.gameObject != GestonesManager.instance.Gemstones[i].gameObject
-                && index == GestonesManager.instance.Gemstones[i].GetComponent<ChangePosition>().indexCurrentPosition)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
+        
     }
 }

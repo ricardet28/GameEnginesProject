@@ -36,30 +36,14 @@ public class GestonesManager : MonoBehaviour {
             int indexRandom = Random.Range(0, GemstonesPositions.Length);
             
             Gemstones[i].transform.position = GemstonesPositions[indexRandom].position;
+            Gemstones[i].transform.parent = GemstonesPositions[indexRandom];
             Gemstones[i].GetComponent<ChangePosition>().indexCurrentPosition = indexRandom;
         }
     }
     
     private bool PositionsRepeated()
     {
-        /*
-        int[] indexsUsed = new int[Gemstones.Length];
-        int j = 0;
-        for (int i = 0; i<Gemstones.Length; i++)
-        {
-            int indexOfCurrentGemstone = Gemstones[i].GetComponent<ChangePosition>().indexCurrentPosition;
-            if (indexsUsed.Contains(indexOfCurrentGemstone))
-            {
-                SpawnGemstones();
-            }
-            else
-            {
-                indexsUsed[j] = indexOfCurrentGemstone;
-                j++;
-            }
-        }
-        */
-        //bool value = false;
+       
         for (int i = 0; i < Gemstones.Length; i++)
         {
             for (int j = 0; j < Gemstones.Length; j++)
