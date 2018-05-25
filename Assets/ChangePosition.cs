@@ -11,41 +11,40 @@ public class ChangePosition : MonoBehaviour {
         timeToTeleport = Random.Range(GestonesManager.instance.minTimeToTeleport, GestonesManager.instance.maxTimeToTeleport);
 	}
 
-    private void Update()
+    private void FixedUpdate()
     {
         currentTime += Time.deltaTime;
         if (currentTime >= timeToTeleport)
         {
             ChangeGemstonePosition();
-            currentTime = 0f;
-            timeToTeleport = Random.Range(GestonesManager.instance.minTimeToTeleport, GestonesManager.instance.maxTimeToTeleport);
+            
         }
     }
 
     private void ChangeGemstonePosition()
     {
         int index = Random.Range(0, GestonesManager.instance.GemstonesPositions.Length);
-        while (CheckIfBusy(index))
+        while (IsBusy(index))
         {
             index = Random.Range(0, GestonesManager.instance.GemstonesPositions.Length);
         }
 
         this.transform.position = GestonesManager.instance.GemstonesPositions[index].position;
-        
+        currentTime = 0f;
+        timeToTeleport = Random.Range(GestonesManager.instance.minTimeToTeleport, GestonesManager.instance.maxTimeToTeleport);
+
     }
 
-    private bool CheckIfBusy(int index)
+    private bool IsBusy(int index)
     {
         int num = GestonesManager.instance.Gemstones.Length;
         for (int i = 0; i<num; i++)
         {
-            if (GestonesManager.instance.Gemstones[i].gameObject != this.gameObject 
-                && GestonesManager.instance.Gemstones[i].GetComponent<ChangePosition>().indexCurrentPosition == index)
+            if (this.gameObject != GestonesManager.instance.Gemstones[i].gameObject
+                && index == GestonesManager.instance.Gemstones[i].GetComponent<ChangePosition>().indexCurrentPosition)
             {
                 return true;
             }
-            
-            
         }
         return false;
     }

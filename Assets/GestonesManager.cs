@@ -20,7 +20,11 @@ public class GestonesManager : MonoBehaviour {
     private void Start()
     {
         SpawnGemstones();
-        CheckSamePosition();
+        while (PositionsRepeated())
+        {
+            SpawnGemstones();
+        }
+
         Debug.Log("Gemstones spawned!");
     }
 
@@ -36,8 +40,9 @@ public class GestonesManager : MonoBehaviour {
         }
     }
     
-    private void CheckSamePosition()
+    private bool PositionsRepeated()
     {
+        /*
         int[] indexsUsed = new int[Gemstones.Length];
         int j = 0;
         for (int i = 0; i<Gemstones.Length; i++)
@@ -53,5 +58,19 @@ public class GestonesManager : MonoBehaviour {
                 j++;
             }
         }
+        */
+        //bool value = false;
+        for (int i = 0; i < Gemstones.Length; i++)
+        {
+            for (int j = 0; j < Gemstones.Length; j++)
+            {
+                if (Gemstones[i].gameObject != Gemstones[j].gameObject && Gemstones[i].GetComponent<ChangePosition>().indexCurrentPosition == Gemstones[j].GetComponent<ChangePosition>().indexCurrentPosition)
+                {
+                    return true;
+                }
+            }
+            
+        }
+        return false;
     }
 }
