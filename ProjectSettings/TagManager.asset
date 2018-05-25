@@ -12,6 +12,7 @@ TagManager:
   - WeaponManager
   - Floor
   - Ground
+  - End
   layers:
   - Default
   - TransparentFX
