@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
 
     private void InitArrayScenes()
     {
-        scenesState = new bool[SceneManager.sceneCountInBuildSettings];
+        scenesState = new bool[SceneManager.sceneCountInBuildSettings + 1];
         for (int i = 0; i < scenesState.Length; i++)
         {
             scenesState[i] = false;
@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour {
         scenesState[(int)Scenes.Tutorial0] = true;
         scenesState[(int)Scenes.Tutorial1] = true;
         scenesState[(int)Scenes.Tutorial2] = true;
+       
         scenesState[(int)Scenes.Corridor] = true;
         scenesState[(int)Scenes.Menu] = true;
         activeScene = Scenes.Corridor;
