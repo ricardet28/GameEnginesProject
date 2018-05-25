@@ -33,6 +33,8 @@ public class ScenesManager : MonoBehaviour {
 
     private IEnumerator ShowLevelCompletedInfo()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         LevelManager.instance.DisablePlayerControls();
         AIManager.instance.DisableAI();
         UIManager.instance.UIPoints.enabled = false;
@@ -47,8 +49,7 @@ public class ScenesManager : MonoBehaviour {
         UIManager.instance.menuButton.gameObject.SetActive(true);
         Button _menuButton = UIManager.instance.menuButton;
         Button _corridorButton = UIManager.instance.corridorButton;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+       
         
         _menuButton.onClick.AddListener(ClickMenuButton);
         _corridorButton.onClick.AddListener(ClickCorridorButton);

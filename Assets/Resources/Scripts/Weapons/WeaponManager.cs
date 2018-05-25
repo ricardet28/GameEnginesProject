@@ -13,6 +13,7 @@ public class WeaponManager : MonoBehaviour {
 
     public BaseBullet[] bullets;
 
+    private bool chanShoot;
     void Awake()
     {
         if (instance == null)
@@ -99,17 +100,6 @@ public class WeaponManager : MonoBehaviour {
         }
     }
 
-    void CheckChangeOfWeapon()
-    {
-        /*if (Input.GetKeyDown(KeyCode.Alpha1) && activeWeaponIndex != 0)
-        {
-            ChangeTypeOfWeapon(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && activeWeaponIndex != 1)
-        {
-            ChangeTypeOfWeapon(1);
-        }*/
-    }
 
     void CheckFire()
     {
@@ -134,13 +124,17 @@ public class WeaponManager : MonoBehaviour {
 
     void FixedUpdate()
     {
-        CheckFire();
-        CheckReload();
+        
+        if (!weapons[activeWeaponIndex].IsReloading())
+        {
+            CheckFire();
+            CheckReload();
+        }
+            
     }
 
     void Update()
     {
         CheckChangeOfBullet();
-        CheckChangeOfWeapon();
     }
 }
