@@ -6,6 +6,8 @@ public class MenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        Debug.Log("Hala");
         UIManager.instance.InstructionsLevel1.enabled = false;
         UIManager.instance.InstructionsLevel2.enabled = false;
         UIManager.instance.InstructionsLevel3.enabled = false;
@@ -28,6 +30,16 @@ public class MenuManager : MonoBehaviour {
         UIManager.instance.backLevelButton.gameObject.SetActive(false);
         UIManager.instance.bullets.gameObject.SetActive(false);
     }
-	
-	
+
+    private void Update()
+    {
+        if(GameManager.instance.activeScene == GameManager.Scenes.Menu && !Cursor.visible)
+        {
+            Debug.Log("a");
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+    }
+
+
 }

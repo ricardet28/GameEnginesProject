@@ -8,5 +8,6 @@ public class LoadLoader : MonoBehaviour {
 	public void onLoadLoader()
     {
         SceneManager.LoadScene((int)GameManager.Scenes.Corridor);
+        GameManager.instance.activeScene = GameManager.Scenes.Corridor;
     }
 }

@@ -423,7 +423,12 @@ public class LevelManager : MonoBehaviour {
 
     private void ClickMenuButton()
     {
+
+        Time.timeScale = 1;
+        EnablePlayerControls();
         GameManager.instance.ChangeLevel(GameManager.Scenes.Menu);
+        Destroy(_player.gameObject);
+        Destroy(WeaponManager.instance.gameObject);
     }
 
     private void HidePauseMenu()

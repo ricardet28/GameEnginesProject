@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
        
         scenesState[(int)Scenes.Corridor] = true;
         scenesState[(int)Scenes.Menu] = true;
-        activeScene = Scenes.Corridor;
+        activeScene = Scenes.Menu;
 
     }
 }

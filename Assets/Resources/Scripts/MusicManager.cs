@@ -35,6 +35,8 @@ public class MusicManager : MonoBehaviour {
 
         _currentScene = GameManager.instance.activeScene;
 
+        Debug.Log((int)_currentScene);
+
         switch (_currentScene)
         {
             case GameManager.Scenes.Menu:
@@ -47,11 +49,13 @@ public class MusicManager : MonoBehaviour {
 
                 break;
             case GameManager.Scenes.Corridor:
-                
-                _audio.Stop();
-                _audio.clip = songs[1];
-                _audio.Play();
-                
+
+                if (_audio.clip != songs[1])
+                {
+                    _audio.Stop();
+                    _audio.clip = songs[1];
+                    _audio.Play();
+                }
 
                 break;
 
