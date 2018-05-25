@@ -55,6 +55,8 @@ public class UIManager : MonoBehaviour
     public Text InstructionsLevel2;
     public Text InstructionsLevel3;
 
+    public GameObject bullets;
+
     public static UIManager instance = null;
 
     void Awake()

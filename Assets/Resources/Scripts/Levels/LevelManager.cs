@@ -404,6 +404,10 @@ public class LevelManager : MonoBehaviour {
         Button _corridorButton = UIManager.instance.corridorButton;
         _corridorButton.onClick.AddListener(ClickCorridorButton);
 
+        Button _menuButton = UIManager.instance.menuButton;
+        _menuButton.onClick.AddListener(ClickMenuButton);
+        
+
 
         UIManager.instance.menuButton.gameObject.SetActive(true);
         //listener para volver al menu
@@ -415,6 +419,11 @@ public class LevelManager : MonoBehaviour {
         Time.timeScale = 1;
         EnablePlayerControls();
         GameManager.instance.ChangeLevel(corridor);  
+    }
+
+    private void ClickMenuButton()
+    {
+        GameManager.instance.ChangeLevel(GameManager.Scenes.Menu);
     }
 
     private void HidePauseMenu()
