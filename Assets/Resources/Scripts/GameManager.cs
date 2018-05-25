@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour {
         }
 
         scenesState[(int)Scenes.Tutorial0] = true;
-        //scenesState[(int)Scenes.Tutorial1] = true;
-        //scenesState[(int)Scenes.Tutorial2] = true;
+        scenesState[(int)Scenes.Tutorial1] = true;
+        scenesState[(int)Scenes.Tutorial2] = true;
         scenesState[(int)Scenes.Corridor] = true;
         activeScene = Scenes.Corridor;
 

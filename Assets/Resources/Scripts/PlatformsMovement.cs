@@ -50,20 +50,15 @@ public class PlatformsMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
 
-        /*Debug.Log("It" + initialY);
-        Debug.Log("PI "+this.transform.position.y);
-        Debug.Log("PD "+position2.y);
-        Debug.Log(verticalDirection);*/
+        UpdatePlatformMovement();
 
-        /*Debug.Log("It" + initialX);
-        Debug.Log("PI " + this.transform.position.x);
-        Debug.Log("PD " + position2.x);
-        Debug.Log(changeDirection);
-        Debug.Log(velocityY + " VY");
-        Debug.Log(velocityX + " VX");*/
+        collidingWithPlayer = false;
+    }
 
+    private void UpdatePlatformMovement()
+    {
         if (lateralMovement && verticalMovement)
         {
             if (this.transform.position.y <= position2.y && changeDirection)
@@ -75,7 +70,7 @@ public class PlatformsMovement : MonoBehaviour {
                 if (changeDirection && (position2.y - this.transform.position.y < 0.1f)) changeDirection = false;
                 if (collidingWithPlayer)
                 {
-                     
+
                     //Debug.Log("Col Play");
                     player.transform.position = new Vector3(player.transform.position.x - velocityX, player.transform.position.y + velocityY + separatingPlayerPlatform, player.transform.position.z);
                 }
@@ -91,7 +86,7 @@ public class PlatformsMovement : MonoBehaviour {
                 if (collidingWithPlayer)
                 {
                     //player.transform.parent = this.transform;
- 
+
                     //Debug.Log("Col Play");
                     player.transform.position = new Vector3(player.transform.position.x + velocityX, player.transform.position.y - velocityY + separatingPlayerPlatform, player.transform.position.z);
 
@@ -100,7 +95,6 @@ public class PlatformsMovement : MonoBehaviour {
         }
         else if (verticalMovement)
         {
-
             if (this.transform.position.y <= position2.y && changeDirection)
             {
                 //Debug.Log("Arriba");
@@ -117,29 +111,5 @@ public class PlatformsMovement : MonoBehaviour {
                 if (!changeDirection && (this.transform.position.y - initialY < 0.1f)) changeDirection = true;
             }
         }
-
-        collidingWithPlayer = false;
-
-        
-
-        /*else if (lateralMovement)
-        {
-
-            if (this.transform.position.x >= position2.x && changeDirection)
-            {
-                Debug.Log("Lado1");
-                float x = this.transform.position.x -  velocityX;
-                this.transform.position = new Vector3(x, this.transform.position.y, this.transform.position.z);
-                if (changeDirection && (position2.x - this.transform.position.x < -0.1f)) changeDirection = false;
-
-            }
-            else if (this.transform.position.x < initialX && !changeDirection)
-            {
-                Debug.Log("Lado2");
-                float x = this.transform.position.x + velocityX;
-                this.transform.position = new Vector3(x, this.transform.position.y, this.transform.position.z);
-                if (!changeDirection && (initialX - this.transform.position.x < 0.1f)) changeDirection = true;
-            }
-        }*/
     }
 }
