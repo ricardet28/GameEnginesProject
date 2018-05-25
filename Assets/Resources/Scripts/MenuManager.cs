@@ -35,7 +35,6 @@ public class MenuManager : MonoBehaviour {
     {
         if(GameManager.instance.activeScene == GameManager.Scenes.Menu && !Cursor.visible)
         {
-            Debug.Log("a");
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }

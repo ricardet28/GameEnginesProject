@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityStandardAssets.Characters.FirstPerson;
 public class CorridorManager : MonoBehaviour
 {
 
@@ -14,7 +14,7 @@ public class CorridorManager : MonoBehaviour
 
     private PlayerHealth _playerHealth;
     private GameObject _player;
-
+    
     private void Awake()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -43,6 +43,7 @@ public class CorridorManager : MonoBehaviour
 
     void SetUpUI()
     {
+        
         UIManager.instance.InstructionsLevel1.enabled = false;
         UIManager.instance.InstructionsLevel2.enabled = false;
         UIManager.instance.InstructionsLevel3.enabled = false;

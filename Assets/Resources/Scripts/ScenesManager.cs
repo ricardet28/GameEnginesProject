@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class ScenesManager : MonoBehaviour {
 
@@ -58,10 +59,25 @@ public class ScenesManager : MonoBehaviour {
         {
             yield return null;
         }
-        corridorButtonPressed = false;
-        menuButtonPressed = false;
-        LevelManager.instance.EnablePlayerControls();
-        GameManager.instance.ChangeLevel(nextScene);
+        if (corridorButtonPressed)
+        {
+            LevelManager.instance.EnablePlayerControls();
+            corridorButtonPressed = false;
+            GameManager.instance.ChangeLevel(nextScene);
+        }
+
+        else if (menuButtonPressed)
+        {
+            menuButtonPressed = false;
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+            Destroy(WeaponManager.instance.gameObject);
+            GameManager.instance.ChangeLevel(GameManager.Scenes.Menu);
+            
+        }
+            
+        
+        
+        
     }
 
     private void ClickMenuButton()

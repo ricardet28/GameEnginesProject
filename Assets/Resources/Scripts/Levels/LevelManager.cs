@@ -126,7 +126,7 @@ public class LevelManager : MonoBehaviour {
 
     private bool checkPlayerAlive()
     {
-        Debug.Log("Player tiene " + playerHealthPoints + " puntos de salud! ");
+        //Debug.Log("Player tiene " + playerHealthPoints + " puntos de salud! ");
         playerHealthPoints = _playerHealth.healthPoints;
         UIManager.instance.healthPoints = playerHealthPoints;
         UIManager.instance.UIHealth.text = playerHealthPoints.ToString();
@@ -229,7 +229,6 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.InfoText.text = "time exceeded";
         DisablePlayerControls();
         AIManager.instance.DisableAI();
-        Debug.Log("TIEMPO AGOTADO. ");
         float _currentTime = 0f;
         while (_currentTime <= startDelay)
         {
@@ -248,7 +247,6 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.InfoText.text = "you died";
         DisablePlayerControls();
         AIManager.instance.DisableAI();
-        Debug.Log("PLAYER MUERTO. ");
         
         float _currentTime = 0f;
         while (_currentTime <= startDelay)
@@ -271,7 +269,6 @@ public class LevelManager : MonoBehaviour {
         {
 
             case (int)GameManager.Scenes.Tutorial0:
-                Debug.Log("Hemos pulsado Instrucciones y estamos en level 1");
                 UIManager.instance.InstructionsLevel1.enabled = true;
                 UIManager.instance.InstructionsLevel2.enabled = false;
                 UIManager.instance.InstructionsLevel3.enabled = false;
@@ -327,7 +324,6 @@ public class LevelManager : MonoBehaviour {
         UIManager.instance.InfoImage.enabled = true;
         UIManager.instance.InfoText.enabled = true;
         UIManager.instance.SubInfoText.enabled = true;
-        Debug.Log("Salimos de la coroutina. ");
     }
 
     private void Update()
@@ -349,8 +345,12 @@ public class LevelManager : MonoBehaviour {
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = false;
+            if (!levelCompleted)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = false;
+            }
+            
         }
     }
     private void CheckPauseMenuInput()
@@ -380,7 +380,6 @@ public class LevelManager : MonoBehaviour {
         {
 
             case (int)GameManager.Scenes.Tutorial0:
-                Debug.Log("Hemos pulsado Instrucciones y estamos en level 1");
                 UIManager.instance.InstructionsLevel1.enabled = true;
                 UIManager.instance.InstructionsLevel2.enabled = false;
                 UIManager.instance.InstructionsLevel3.enabled = false;
