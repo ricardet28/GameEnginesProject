@@ -31,7 +31,7 @@ public class CorridorManager : MonoBehaviour
         }
         if (GameManager.instance.scenesState[(int)GameManager.Scenes.Tutorial2] == true)
         {
-            panel2.SetActive(true);
+            panel2.SetActive(false);
         }
     }
 
