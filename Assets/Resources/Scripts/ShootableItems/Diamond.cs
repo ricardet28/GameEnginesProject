@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Diamond : ShootableItem {
 
-   
+
 
     public override void Setup()
     {

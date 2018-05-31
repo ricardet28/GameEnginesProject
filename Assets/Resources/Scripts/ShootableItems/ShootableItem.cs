@@ -13,8 +13,9 @@ abstract public class ShootableItem : MonoBehaviour {
     protected int pointsWhenDestroyed;
 
     LevelManager levelManager;
-    public AudioSource destroyItem;
     public abstract void Setup();
+
+    public AudioSource destroyItem;
 
     void Start()
     {
@@ -35,7 +36,7 @@ abstract public class ShootableItem : MonoBehaviour {
         lifePoints -= d;
         if (lifePoints - d <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,0.5f);
         }
     }
 
@@ -47,8 +48,7 @@ abstract public class ShootableItem : MonoBehaviour {
 
             Debug.Log(this.gameObject.name);
             destroyItem.Play();
-            Debug.Log(destroyItem.name);
-            TakeDamage((int)c.gameObject.GetComponent<BaseBullet>().damage);
+            //TakeDamage((int)c.gameObject.GetComponent<BaseBullet>().damage);
             levelManager.AddPoints(pointsWhenDestroyed);
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
             if (this.gameObject.transform.childCount == 0)
