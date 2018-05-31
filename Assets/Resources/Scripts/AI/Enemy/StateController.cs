@@ -47,6 +47,9 @@ public class StateController : MonoBehaviour {
 
     public bool aiActive;
 
+    public AudioSource detecPlayerAudio;
+    public AudioSource shootAudio;
+
 
     private void Awake()
     {
@@ -120,6 +123,7 @@ public class StateController : MonoBehaviour {
             //Debug.Log("handling time to teleport! ");
             handleTeleportTime();
         }
+        
         currentState.UpdateState(this);
 
         //StateBehaviour();
@@ -165,6 +169,18 @@ public class StateController : MonoBehaviour {
 
     }
 
+    public void PlayPlayerDetectedAudio()
+    {
+        if (!detecPlayerAudio.isPlaying)
+            detecPlayerAudio.Play();
+    }
+
+    public void PlayShootAudio()
+    {
+        if (!shootAudio.isPlaying)
+            shootAudio.Play();
+
+    }
 
     private void OnDrawGizmos()
     {

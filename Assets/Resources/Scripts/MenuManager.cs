@@ -7,7 +7,11 @@ public class MenuManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        Debug.Log("Hala");
+        if (MusicManager.instance._audio.enabled == false)
+        {
+            MusicManager.instance._audio.enabled = true;
+        }
+        
         UIManager.instance.InstructionsLevel1.enabled = false;
         UIManager.instance.InstructionsLevel2.enabled = false;
         UIManager.instance.InstructionsLevel3.enabled = false;

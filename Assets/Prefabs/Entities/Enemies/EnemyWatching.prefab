@@ -243,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4516970266240984}
   - component: {fileID: 114544202114340344}
+  - component: {fileID: 82957581000377822}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1201,6 +1202,86 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!82 &82957581000377822
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807535133673608}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1be25af85348ca84b8949e06a799468b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95643980467649834
 Animator:
   serializedVersion: 3
@@ -1315,12 +1396,19 @@ MonoBehaviour:
   remainState: {fileID: 11400000, guid: cbc644983336429428b279f41bec053e, type: 2}
   navMeshAgent: {fileID: 0}
   wayPointList: []
+  teleportPoints: []
+  currentPoint: {fileID: 0}
   nextWayPoint: 0
   chaseTarget: {fileID: 0}
   stateTimeElapsed: 0
   readyToScanAgain: 0
   lastPositionPlayer: {x: 0, y: 0, z: 0}
   lerpValue: 0
+  currentTimer: 0
+  teleportAvalaible: 0
+  aiActive: 0
+  detecPlayerAudio: {fileID: 0}
+  shootAudio: {fileID: 82957581000377822}
 --- !u!114 &114602780562664958
 MonoBehaviour:
   m_ObjectHideFlags: 1

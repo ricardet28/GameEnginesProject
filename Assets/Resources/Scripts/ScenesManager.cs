@@ -34,6 +34,8 @@ public class ScenesManager : MonoBehaviour {
 
     private IEnumerator ShowLevelCompletedInfo()
     {
+        MusicManager.instance.StopMusic();
+        LevelManager.instance.PlayLevelCompletedMusic();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         LevelManager.instance.DisablePlayerControls();
@@ -50,7 +52,6 @@ public class ScenesManager : MonoBehaviour {
         UIManager.instance.menuButton.gameObject.SetActive(true);
         Button _menuButton = UIManager.instance.menuButton;
         Button _corridorButton = UIManager.instance.corridorButton;
-       
         
         _menuButton.onClick.AddListener(ClickMenuButton);
         _corridorButton.onClick.AddListener(ClickCorridorButton);

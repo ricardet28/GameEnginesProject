@@ -23,7 +23,7 @@ public class CorridorManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        MusicManager.instance.PlayMusic();
         SetUpUI();
         OnGoingToCorridor();
         if(GameManager.instance.scenesState[(int)GameManager.Scenes.Tutorial1] == true)

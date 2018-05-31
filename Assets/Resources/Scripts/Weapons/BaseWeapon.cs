@@ -23,6 +23,10 @@ abstract public class BaseWeapon : MonoBehaviour {
 
     public abstract void Setup();
 
+    public AudioSource audioSourceGun;
+    public AudioClip shootGun;
+    public AudioClip reloadGun;
+
     void Start()
     {
         if(WeaponManager.instance == null)
@@ -40,6 +44,9 @@ abstract public class BaseWeapon : MonoBehaviour {
         
         rBodyBullet.AddForce(WeaponManager.instance.bullets[WeaponManager.instance.activeBulletIndex].velocity * shootPoint.transform.forward);
 
+        audioSourceGun.clip = shootGun;
+        audioSourceGun.Play();
+
         anim.CrossFadeInFixedTime("Fire", 0.1f);
 
         fireTimer = 0;
@@ -54,6 +61,9 @@ abstract public class BaseWeapon : MonoBehaviour {
     public void Reload()
     {
         if (bulletsLeft <= 0) return;
+
+        audioSourceGun.clip = reloadGun;
+        audioSourceGun.Play();
 
         DoReload();
 

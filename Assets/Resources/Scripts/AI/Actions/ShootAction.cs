@@ -15,9 +15,7 @@ public class ShootAction : ActionAI
     {
         
         Vector3 aimPlayer = controller.chaseTarget.position - controller.transform.position;
-
         Vector3 direction = controller.chaseTarget.position - controller.transform.position;
-        //direction.y = 0;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, targetRotation, 4f * Time.deltaTime);
 
@@ -39,9 +37,8 @@ public class ShootAction : ActionAI
         {
             if (controller.checkIfCountDownElapsed(controller.enemyStats.attackRate))
             {
-                Debug.Log("SHOOTING!!");
+                controller.PlayShootAudio();
                 Rigidbody projectileInstance = (Rigidbody)Instantiate(controller.projectile, controller.firePosition.position, controller.eyes.rotation);
-                //projectileInstance.velocity = Vector3.Distance(controller.transform.position, controller.chaseTarget.position) * controller.enemyStats.attackForce * controller.firePosition.forward;
                 projectileInstance.velocity = Vector3.Distance(controller.transform.position, controller.chaseTarget.position) * controller.enemyStats.attackForce * aimPlayer.normalized;
                 controller.stateTimeElapsed = 0f;
                 

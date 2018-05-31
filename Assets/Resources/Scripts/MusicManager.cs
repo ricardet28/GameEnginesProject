@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour {
 
     public static MusicManager instance = null;
-    private AudioSource _audio;
+    public AudioSource _audio;
     private GameManager.Scenes _currentScene;
 
     public AudioClip[] songs;
 
     public static int winner;
     public static bool imageChanged;
+
 
     private void Awake()
     {
@@ -28,11 +29,10 @@ public class MusicManager : MonoBehaviour {
         }
         DontDestroyOnLoad(this.gameObject);
     }
+
     private void Update()
     {
-        if (GetComponent<AudioSource>() != null)
-            _audio = GetComponent<AudioSource>();
-
+    
         _currentScene = GameManager.instance.activeScene;
 
         Debug.Log((int)_currentScene);
@@ -58,33 +58,36 @@ public class MusicManager : MonoBehaviour {
                 }
 
                 break;
+        }
+    }
 
-            case GameManager.Scenes.Tutorial0:
+    public void StopMusic()
+    {
+        _audio.enabled = false;
+    }
 
-                if (_audio.clip == songs[1])
-                {
-                    _audio.Stop();
-                    _audio.clip = songs[2];
-                    _audio.Play();
-                }
+    public void PlayMusic()
+    {
+        _audio.enabled = true;
+        switch (_currentScene)
+        {
+           
+            case GameManager.Scenes.Tutorial0:  
+                _audio.Stop();
+                _audio.clip = songs[2];
+                _audio.Play();         
                 break;
 
             case GameManager.Scenes.Tutorial1:
-                if (_audio.clip == songs[1])
-                {
-                    _audio.Stop();
-                    _audio.clip = songs[3];
-                    _audio.Play();
-                }
+                _audio.Stop();
+                _audio.clip = songs[3];
+                _audio.Play();
                 break;
 
             case GameManager.Scenes.Tutorial2:
-                if (_audio.clip == songs[1])
-                {
-                    _audio.Stop();
-                    _audio.clip = songs[4];
-                    _audio.Play();
-                }
+                _audio.Stop();
+                _audio.clip = songs[4];
+                _audio.Play();
                 break;
         }
     }

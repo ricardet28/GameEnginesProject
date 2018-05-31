@@ -30,6 +30,10 @@ public class LevelManager : MonoBehaviour {
     public float startDelay = 3f;
     public float endDelay = 3f;
 
+    public AudioSource audioSourceLevelManager;
+    public AudioClip gameOverClip;
+    public AudioClip levelCompletedClip;
+
     public static LevelManager instance = null;
 
     private void Awake()
@@ -46,7 +50,7 @@ public class LevelManager : MonoBehaviour {
 
     private void Start()
     {
-        Debug.Log("LevelManager creado!");
+        MusicManager.instance.PlayMusic();
         GameManager.instance._currentLevel = this;
         playerHealthPoints = _playerHealth.initHealthPoints;
         SetInitialParameters();
@@ -196,9 +200,13 @@ public class LevelManager : MonoBehaviour {
                 currentTime -= Time.deltaTime;
                 UIManager.instance.UITime.text = ((int)currentTime).ToString();
             }
+            
             yield return null;
 
         }
+        MusicManager.instance.StopMusic();
+        audioSourceLevelManager.clip = gameOverClip;
+        audioSourceLevelManager.Play();
         yield return StartCoroutine(TimeExceeded());
         reloadThisScene();
     }
@@ -210,6 +218,9 @@ public class LevelManager : MonoBehaviour {
             yield return null;
         }
         playerDead = true;
+        MusicManager.instance.StopMusic();
+        audioSourceLevelManager.clip = gameOverClip;
+        audioSourceLevelManager.Play();
         yield return StartCoroutine(PlayerDead());
         reloadThisScene();
     }
@@ -291,6 +302,12 @@ public class LevelManager : MonoBehaviour {
         _backLevelButton.onClick.AddListener(ClickBackLevelButton);
         StartCoroutine(ShowInstructionsLevel());
         Time.timeScale = 0;
+    }
+
+    public void PlayLevelCompletedMusic()
+    {
+        audioSourceLevelManager.clip = levelCompletedClip;
+        audioSourceLevelManager.Play();
     }
 
     private void ClickBackLevelButton()

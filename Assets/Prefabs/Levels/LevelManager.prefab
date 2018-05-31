@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4577419360330108}
   - component: {fileID: 114607694681320368}
+  - component: {fileID: 82834348441100540}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -40,6 +41,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82834348441100540
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405092168758802}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114607694681320368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,8 +132,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60113bb8a06109d44a11479d3ffea12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neededPoints: 0
-  maxTimeToComplete: 0
   levelCompleted: 0
+  levelStarted: 0
   spawnPoint: {fileID: 0}
-  currentPoints: 0
+  neededPoints: 100
+  maxTimeToComplete: 0
+  currentTime: 0
+  startDelay: 3
+  endDelay: 3
+  audioSourceLevelManager: {fileID: 82834348441100540}
+  gameOverClip: {fileID: 8300000, guid: 7118ad04c0b8ab44a90f1179f833b658, type: 3}
+  levelCompletedClip: {fileID: 8300000, guid: 51a2fe92ef2a72e48a78bb1c482bc1fb, type: 3}

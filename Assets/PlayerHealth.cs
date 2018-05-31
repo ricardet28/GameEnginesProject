@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour {
     public int healthPoints = 100;
     public int initHealthPoints;
-
+    public AudioSource _audioSourceHealth;
     
 	// Use this for initialization
 	void Start () {
@@ -15,6 +15,11 @@ public class PlayerHealth : MonoBehaviour {
 
     public void getDamage(int value)
     {
+        if (!_audioSourceHealth.isPlaying)
+        {
+            _audioSourceHealth.Play();
+        }
+        
         healthPoints -= value;
         UIManager.instance.healthPoints = healthPoints;
     }

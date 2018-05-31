@@ -13,7 +13,7 @@ abstract public class ShootableItem : MonoBehaviour {
     protected int pointsWhenDestroyed;
 
     LevelManager levelManager;
-
+    public AudioSource destroyItem;
     public abstract void Setup();
 
     void Start()
@@ -44,14 +44,31 @@ abstract public class ShootableItem : MonoBehaviour {
     {
         if (c.gameObject.GetComponent<FastBullet>() != null || c.gameObject.GetComponent<MediumBullet>() != null || c.gameObject.GetComponent<SlowBullet>() != null)
         {
-            Debug.Log("esto existe");
+
+            Debug.Log(this.gameObject.name);
+            destroyItem.Play();
+            Debug.Log(destroyItem.name);
             TakeDamage((int)c.gameObject.GetComponent<BaseBullet>().damage);
             levelManager.AddPoints(pointsWhenDestroyed);
-            Destroy(this.gameObject);
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
+            if (this.gameObject.transform.childCount == 0)
+            {
+                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                this.gameObject.GetComponent<Light>().enabled = false;
+                this.gameObject.GetComponent<VolumetricLight>().enabled = false;
+            }
+            else
+            {
+                this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+               
+            }
+            
+                
+            Destroy(this.gameObject,0.5f);
         }
         if (c.gameObject.CompareTag("Wall"))
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.5f);
         }
     }
 

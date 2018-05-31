@@ -21,7 +21,8 @@ public class ShootingAction : ActionAI {
         {
             if (controller.checkIfCountDownElapsed(controller.enemyStats.attackRate2))
             {
-                Debug.Log("SHOOTING!!");
+                
+                controller.PlayShootAudio();
                 Rigidbody projectileInstance = (Rigidbody)Instantiate(controller.projectile, controller.eyes.position, controller.eyes.rotation);
                 //projectileInstance.velocity = Vector3.Distance(controller.transform.position, controller.chaseTarget.position) * controller.enemyStats.attackForce * controller.firePosition.forward;
                 projectileInstance.velocity = Vector3.Distance(controller.transform.position, controller.chaseTarget.position) * controller.enemyStats.attackForce * direction.normalized;

@@ -36,7 +36,7 @@ public class DetectPlayerDecision : Decision {
                 controller.chaseTarget = hit.transform;
 
                 controller.fatherDetectsPlayer = true;
-                
+                controller.PlayPlayerDetectedAudio();
                 return true;
 
             }
