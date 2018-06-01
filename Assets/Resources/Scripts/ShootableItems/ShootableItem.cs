@@ -68,7 +68,7 @@ abstract public class ShootableItem : MonoBehaviour {
         }
         if (c.gameObject.CompareTag("Wall"))
         {
-            Destroy(this.gameObject, 0.5f);
+            Destroy(this.gameObject);
         }
     }
 
