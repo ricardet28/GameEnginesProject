@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!200 &20000000
+ShaderVariantCollection:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: NewShaderVariants
+  m_Shaders:
+  - first: {fileID: 19, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 66, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: SHADOWS_DEPTH
+        passType: 8
+      - keywords: SHADOWS_CUBE
+        passType: 8
+      - keywords: UNITY_HDR_ON
+        passType: 10
+      - keywords: DIRLIGHTMAP_COMBINED LIGHTMAP_ON UNITY_HDR_ON
+        passType: 10
+      - keywords: UNITY_HDR_ON _EMISSION
+        passType: 10
+      - keywords: DIRLIGHTMAP_COMBINED LIGHTMAP_ON UNITY_HDR_ON _EMISSION
+        passType: 10
+  - first: {fileID: 74, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 69, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: SPOT UNITY_HDR_ON
+        passType: 0
+      - keywords: POINT UNITY_HDR_ON
+        passType: 0
+      - keywords: SHADOWS_DEPTH SPOT UNITY_HDR_ON
+        passType: 0
+      - keywords: POINT SHADOWS_CUBE UNITY_HDR_ON
+        passType: 0
+      - keywords: POINT SHADOWS_CUBE SHADOWS_SOFT UNITY_HDR_ON
+        passType: 0
+  - first: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: _SUNDISK_SIMPLE
+        passType: 0
+  - first: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: SOFTPARTICLES_ON
+        passType: 0
+  - first: {fileID: 9000, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 9001, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 4800000, guid: 6dedef75fd0484cdf8557f522ceaa8bf, type: 3}
+    second:
+      variants:
+      - keywords: DIRECTIONAL DIRLIGHTMAP_COMBINED DYNAMICLIGHTMAP_OFF LIGHTMAP_ON
+        passType: 4
+      - keywords: DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SPOT
+        passType: 5
+      - keywords: DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF POINT SHADOWS_CUBE
+        passType: 5
+      - keywords: DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_DEPTH
+        passType: 8
+      - keywords: DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LIGHTMAP_OFF SHADOWS_CUBE
+        passType: 8
+  - first: {fileID: 4800000, guid: c2282c5842bb6d74d999852919953d40, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 4800000, guid: d297a5d5cdd4e7f469b33e9f468e00d1, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 4800000, guid: f1531a9bd4087ff468de8de09f6ba126, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: SPOT
+        passType: 0
+      - keywords: POINT
+        passType: 0
+      - keywords: SHADOWS_DEPTH SPOT
+        passType: 0
+  - first: {fileID: 4800000, guid: 291f0d5b6045f4646847c59b4ce13ac5, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+  - first: {fileID: 4800000, guid: 4ceb73bc148699b469361531d6062548, type: 3}
+    second:
+      variants:
+      - keywords: 
+        passType: 0
+      - keywords: ANTI_FLICKER
+        passType: 0
+  - first: {fileID: 4800000, guid: 8ce0a6f4c8cae334d8a5617f302b6769, type: 3}
+    second:
+      variants:
+      - keywords: BLOOM
+        passType: 0
+  - first: {fileID: 4800000, guid: 2e69372d8a148f64eab37fb57d14576b, type: 3}
+    second:
+      variants:
+      - keywords: DIRECTIONAL
+        passType: 4
+      - keywords: DIRECTIONAL DIRLIGHTMAP_COMBINED LIGHTMAP_ON
+        passType: 4
+      - keywords: DIRECTIONAL VERTEXLIGHT_ON
+        passType: 4
+  - first: {fileID: 4800000, guid: c6888ccba140b7346bf6c798f4f69c11, type: 3}
+    second:
+      variants:
+      - keywords: DIRECTIONAL
+        passType: 4
+      - keywords: SHADOWS_DEPTH
+        passType: 8
+  - first: {fileID: 4800000, guid: 29fed12d8547e354e90be987488147c1, type: 3}
+    second:
+      variants:
+      - keywords: _GLITCH_ON _GLOW_ON _SCAN_ON
+        passType: 0
+  - first: {fileID: 4800000, guid: a5aa341af321f2e46b4657efa6086d61, type: 3}
+    second:
+      variants:
+      - keywords: DIRECTIONAL
+        passType: 4
+      - keywords: DIRECTIONAL VERTEXLIGHT_ON
+        passType: 4
+      - keywords: SHADOWS_DEPTH
+        passType: 8
